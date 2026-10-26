@@ -73,16 +73,19 @@ const quizDomande = [
 ];
 
 /* Costanti del quiz */
-const TOTAL_QUESTIONS = QUESTIONS.length;
-const PASS_THRESHOLD = 60;     // percentuale minima per "Promosso"
-const FEEDBACK_DELAY = 1500;   // ms di attesa dopo risposta prima di avanzare
-const TIMER_DURATION = 20;     // secondi per ogni domanda
+const numeroDomande = numeroDomande.length;
+const sogliaPromozione = 60;     // percentuale minima per "Promosso"
+const ritardoFeedback = 1500;   // ms di attesa dopo risposta prima di avanzare
+const durataTimer = 20;     // secondi per ogni domanda
+const mostraBenvenuto = '';
+const avviaTimer = '';
+const gestisciRisposta = '';
 
 /* Stato globale */
-let currentScreen = "welcome"; // "welcome" | "quiz" | "results"
-let currentQuestion = 0;
-let score = 0;
-let timerId = null;
+let schermataAttiva = "welcome"; // "welcome" | "quiz" | "results"
+let indiceDomanda = 0;
+let punteggio = 0;
+let idTimer = null;
 
 
 

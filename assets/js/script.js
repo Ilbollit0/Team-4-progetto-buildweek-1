@@ -73,13 +73,8 @@ const quizDomande = [
 ];
 
 /* Costanti del quiz */
-const numeroDomande = quizDomande.length;
 const sogliaPromozione = 60;     // percentuale minima per "Promosso"
 const ritardoFeedback = 1500;   // ms di attesa dopo risposta prima di avanzare
-const durataTimer = 20;     // secondi per ogni domanda
-const mostraBenvenuto = '';
-const avviaTimer = '';
-const gestisciRisposta = '';
 
 /* Stato globale */
 let schermataAttiva = "welcome"; // "welcome" | "quiz" | "results"
@@ -87,7 +82,9 @@ let indiceDomanda = 0;
 let punteggio = 0;
 let idTimer = null;
 
-
+function mostraBenvenuto() {  };   // chi fa la pagina iniziale (Alessandro)
+function avviaTimer() { };        // Nicholas
+function gestisciRisposta()  {}; // Francesco
 
 /* SCRIVI QUI LE TUE FUNZIONI:
    - render() che chiama renderWelcome / renderQuiz / renderResults in base a currentScreen

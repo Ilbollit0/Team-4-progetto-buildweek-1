@@ -1,32 +1,22 @@
-<!DOCTYPE html>
-<html lang="it">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quiz App</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-</head>
-
-<body>
-  <header class="brand">
-    <img src="assets/epicode-logo.png" alt="Epicode" class="brand-logo" />
-  </header>
-  <main id="app">
-    <!-- qui dentro vengono renderizzate le tre schermate dal JavaScript:
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header class="brand">
+      <img src="assets/epicode-logo.png" alt="Epicode" class="brand-logo" />
+    </header>
+    <main id="app">
+      <!-- qui dentro vengono renderizzate le tre schermate dal JavaScript:
            welcome, quiz, results -->
-    <section id="paginaIniziale" class="schermata">
+           <section id="paginaIniziale" class="schermata"></section>
+           <section id="domande" class="schermata nascosto" ></section>
+           <section id="paginaFinale" class="schermata nascosto" ></section>
+    </main>
 
-    </section>
-    <section id="domande" class="schermata" hidden>
-      <p id="contatoreDomande"></p>
-    </section>
-    <section id="paginaFinale" class="schermata" hidden>
-      
-    </section>
-  </main>
-  <script src="assets/js/script.js"></script>
-
-</body>
-
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/timer.js"></script>
+  </body>
 </html>

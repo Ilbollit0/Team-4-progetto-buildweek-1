@@ -13,7 +13,6 @@
    - correct_answer: la risposta corretta (string)
    - incorrect_answers: array di risposte sbagliate (string[])
 */
-const contatore = document.querySelector('#contatoreDomande')
 
 
 

@@ -10,7 +10,7 @@ main{
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #1b1535 url("assets/bg.jpg") center / cover no-repeat fixed;
+  background: #1b1535 url("../bg.jpg") center / cover no-repeat fixed;
   color: #1b2845;
   min-height: 100vh;
   display: flex;
@@ -37,6 +37,27 @@ body {
   max-width: 720px;
   width: 100%;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+/* [Gabriel] timer normale: "pillola" grigia con i secondi in grassetto */
+.tempoRimasto {
+  display: inline-block;
+  min-width: 56px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background-color: #f1f0f7;
+  color: #1b2045;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* [Gabriel] ultimi 5 secondi: il timer diventa rosso fino allo 0.
+   .tempoRimasto.ultimiSecondi è più specifico di .tempoRimasto, quindi vince sempre */
+.tempoRimasto.ultimiSecondi {
+  background-color: #fde2e2;
+  color: #d32f2f;
 }
 
 /* Aggiungi qui le tue regole CSS per:

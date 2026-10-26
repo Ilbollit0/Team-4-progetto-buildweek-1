@@ -60,8 +60,172 @@ body {
   color: #d32f2f;
 }
 
-/* Aggiungi qui le tue regole CSS per:
-   - .welcome (titolo, intro, button Inizia)
-   - .quiz (counter, timer, domanda, button risposta, classi correct/wrong)
-   - .results (percentuale, barre orizzontali, verdetto promosso/bocciato, restart)
-*/
+/* [Luca] Pagina iniziale e pagina finale.
+   Le <section> #paginaIniziale e #paginaFinale sono già in index.html: il JS genera solo
+   l'interno (es. con innerHTML), con queste classi.
+
+   Dentro #paginaIniziale:
+     <h1 class="titoloIniziale">Benvenuto al tuo esame</h1>
+     <p class="introIniziale">...</p>
+     <ul class="regoleIniziali"><li>...</li></ul>
+     <button class="pulsantePrimario">Inizia</button>
+
+   Dentro #paginaFinale:
+     <h2 class="titoloFinale">Risultati</h2>
+     <p class="sottotitoloFinale">Hai completato il quiz.</p>
+     <p class="percentualeFinale">80%</p>
+     <p class="esitoFinale esitoPromosso">Promosso</p>   (oppure esitoBocciato)
+     <div class="barreFinali">
+       <div class="rigaBarra">
+         <span class="etichettaBarra">Corrette</span>
+         <div class="tracciaBarra"><div class="riempimentoBarra barraCorrette"></div></div>
+         <span class="conteggioBarra">8/10</span>
+       </div>
+       <div class="rigaBarra"> ... stessa struttura con barraSbagliate ... </div>
+     </div>
+     <button class="pulsantePrimario">Ricomincia</button>
+
+   Il JS sceglie esitoPromosso o esitoBocciato in base al risultato e imposta la larghezza
+   di .riempimentoBarra con style.width (es. "80%"). */
+
+/* [Luca] Pulsante principale (Inizia, Ricomincia) */
+
+.pulsantePrimario {
+  padding: 13px 30px;
+  border: 0;
+  border-radius: 10px;
+  background-color: #1b2845;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pulsantePrimario:hover {
+  background-color: #2b3d6b;
+}
+
+.pulsantePrimario:focus-visible {
+  outline: 3px solid #7a5cff;
+  outline-offset: 2px;
+}
+
+/* [Luca] Pagina iniziale */
+.titoloIniziale {
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.introIniziale {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #4a5568;
+}
+
+/* il reset iniziale azzera il rientro della lista: va rimesso per vedere i pallini */
+.regoleIniziali {
+  margin-bottom: 32px;
+  padding-left: 22px;
+  list-style: disc;
+  line-height: 1.5;
+  color: #4a5568;
+}
+
+/* [Luca] Pagina finale */
+#paginaFinale {
+  text-align: center;
+}
+
+.titoloFinale {
+  margin-bottom: 24px;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.sottotitoloFinale {
+  margin-bottom: 36px;
+  font-size: 0.95rem;
+  color: #3b4252;
+}
+
+.percentualeFinale {
+  margin-bottom: 28px;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.esitoFinale {
+  margin-bottom: 56px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.esitoPromosso {
+  background-color: #e1f3e4;
+  color: #2a7d57;
+}
+
+.esitoBocciato {
+  background-color: #fde2df;
+  color: #c64c46;
+}
+
+.barreFinali {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 56px;
+  text-align: left;
+}
+
+.rigaBarra {
+  display: grid;
+  grid-template-columns: 90px 1fr 48px;
+  align-items: center;
+  gap: 12px;
+}
+
+.etichettaBarra {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #6b7280;
+}
+
+.tracciaBarra {
+  height: 14px;
+  border-radius: 999px;
+  background-color: #f3f3f6;
+  overflow: hidden;
+}
+
+.riempimentoBarra {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.barraCorrette {
+  background-color: #2a7d57;
+}
+
+.barraSbagliate {
+  background-color: #cf453c;
+}
+
+.conteggioBarra {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+/* [Luca] Serve a mostraSchermataGiusta(). Tenerla per ultima - non impostare "display"
+   sulle <section> delle schermate, altrimenti questa regola può perdere */
+.nascosto {
+  display: none;
+}
+
+/* Da fare (Manuel): stile del quiz (#domande): contatore, domanda, risposte, classi corretta/sbagliata */

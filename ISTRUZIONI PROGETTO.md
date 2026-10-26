@@ -141,9 +141,9 @@ Regole già presenti nello starter (`assets/js/script.js`):
 | `currentQuestion` | `indiceDomanda`       | Posizione della domanda corrente nell'array: parte da 0, quindi a video si mostra +1 |
 | `score` | `punteggio`                     | Numero di risposte corrette finora: a fine quiz serve per percentuale e barre |
 | `timerId` | `idTimer`                     | Identificatore del timer attivo, per poterlo fermare; `null` se non ce n'è uno in corso |
-| `renderWelcome` / `renderQuiz` / `renderResults` | `mostraBenvenuto` / `mostraQuiz` / `mostraRisultati`    | Le tre funzioni che disegnano le schermate dentro `#app` a partire dallo stato |
-| `startTimer` / `stopTimer` / `handleTimeUp` | `avviaTimer` / `fermaTimer` / `gestisciTempoScaduto`         | Avvia il conto alla rovescia; lo ferma; cosa fare a zero (blocca le risposte e mostra la giusta) |
-| `handleAnswer` / `advance` | `gestisciRisposta` / `avanza`                                                 | Gestisce il click su una risposta (verifica, colore, punteggio); passa alla domanda successiva o ai risultati |
+| `renderWelcome` | `mostraBenvenuto`       | Mostra la schermata iniziale: titolo, introduzione e pulsante Inizia |
+| `startTimer` | `avviaTimer`               | Avvia il conto alla rovescia della domanda |
+| `handleAnswer` | `gestisciRisposta`       | Gestisce il click su una risposta: verifica se è corretta, la colora e aggiorna il punteggio |
 
 ### Cosa dobbiamo realizzare
 
@@ -160,9 +160,9 @@ Regole già presenti nello starter (`assets/js/script.js`):
 
 | File **(nomi in proposta)** | Contenuto | Responsabile |
 |---|---|---|
-| `impostazioni.js` | Impostazioni globali: costanti, stato condiviso, array delle domande con `id` e `timer` | **da assegnare** |
+| `impostazioni.js` | Impostazioni globali: costanti, stato condiviso, array delle domande con `id` e `timer` | Manuel |
 | `timer.js` | Conto alla rovescia: avvio, stop, tempo scaduto | Nicholas |
-| `schermate.js` | Schermata iniziale e schermata finale | Alessandro |
+| `schermate.js` | Schermata iniziale e schermata finale | Alessandro, Giuseppe |
 | `domande.js` | Lista domande e risposte, con verifica | Francesco, Manuel |
 
 L'`index.html` oggi carica un solo `script.js`: con più file vanno aggiunti più `<script>` **in ordine di dipendenza** (impostazioni → domande → timer → schermate) **(proposta)**.
@@ -181,6 +181,28 @@ Definiti per il momento.
 | Giuseppe | Contatore interno, contatore finale |
 | Manuel | CSS, lista domande e risposte con verifica |
 
+**Divisione del CSS**
+
+| Persona | Parte di CSS |
+|---|---|
+| Luca | Pagina iniziale e pagina finale |
+| Manuel | Interno del quiz: domande e risposte |
+| Gabriel | Timer |
+
+### Scadenziario del team
+
+| Persona | Martedì | Mercoledì |
+|---|---|---|
+| Francesco | Lista delle domande | Verifica della risposta; se è sbagliata, mostrare quella giusta |
+| Alessandro | Pagina iniziale | Pagina finale |
+| Giuseppe | Contatore interno | Contatore finale |
+| Nicholas | Finire il timer | Aiutare chi è più indietro |
+| Manuel, Luca, Gabriel (CSS) | Dare le classi a chi gestisce il JS e fare le prime impostazioni | Rifinire il CSS e migliorare lo stile della pagina |
+
+- **Giovedì**: ognuno rivede le proprie sezioni insieme a chi si è occupato del CSS; snellire il codice, allineare i dati, controllare il funzionamento, sistemare il CSS, aggiornare il README.
+- **Venerdì mattina**: ultimi controlli, debug e rifiniture finali.
+- **Venerdì 16:30**: esporre il progetto al resto dei colleghi (è anche la scadenza della consegna, vedi *Consegna*).
+
 ### Comportamento di riferimento
 
 Card bianca di circa 720px su sfondo viola/blu, logo Epicode in alto a sinistra: 
@@ -196,8 +218,6 @@ Card bianca di circa 720px su sfondo viola/blu, logo Epicode in alto a sinistra:
 
 Da decidere ancora nel team; nessuno è stato ancora deciso, può essere una divisione più precisa:
 
-1. **Impostazioni globali** e modifica dell'array (`id` e `timer`): ancora nessun responsabile.
-2. **Lista domande e risposte con verifica**: assegnata sia a Francesco sia a Manuel. Come si dividono concretamente il lavoro?
-3. **Risultato finale**: Giuseppe ha il contatore finale, Alessandro le schermate. Chi calcola la percentuale e chi la mostra?
-4. **CSS**: tre persone (Gabriel, Luca, Manuel). Dividere per schermata o per tipo di elemento?
-5. **Caricamento degli script**: conferma dei nomi dei file e dell'ordine dei `<script>` (vedi sopra).
+1. **Lista domande e risposte con verifica**: assegnata sia a Francesco sia a Manuel. Come si dividono concretamente il lavoro?
+2. **Risultato finale**: Giuseppe ha il contatore finale, Alessandro le schermate. Chi calcola la percentuale e chi la mostra?
+3. **Caricamento degli script**: conferma dei nomi dei file e dell'ordine dei `<script>` (vedi sopra).

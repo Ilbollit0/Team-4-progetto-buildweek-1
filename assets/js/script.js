@@ -73,7 +73,7 @@ const quizDomande = [
 ];
 
 /* Costanti del quiz */
-const numeroDomande = numeroDomande.length;
+const numeroDomande = quizDomande.length;
 const sogliaPromozione = 60;     // percentuale minima per "Promosso"
 const ritardoFeedback = 1500;   // ms di attesa dopo risposta prima di avanzare
 const durataTimer = 20;     // secondi per ogni domanda

@@ -13,69 +13,63 @@
    - correct_answer: la risposta corretta (string)
    - incorrect_answers: array di risposte sbagliate (string[])
 */
-const QUESTIONS = [
+const quizDomande = [
   {
-    question: "Cosa significa l'acronimo CPU?",
-    correct_answer: "Central Processing Unit",
-    incorrect_answers: [
-      "Central Process Unit",
-      "Computer Personal Unit",
-      "Central Processor Unit",
-    ],
+    id: 1,
+    categoria: "HTML",
+    domanda: "Qual è il tag HTML corretto per inserire un collegamento ipertestuale (link)?",
+    opzioni: ["<link>", "<a>", "<href>", "<url>"],
+    rispostaCorretta: "<a>",
+    tempo: 15
   },
   {
-    question:
-      "In Java, quale keyword si usa per impedire che una variabile venga modificata?",
-    correct_answer: "final",
-    incorrect_answers: ["static", "private", "public"],
+    id: 2,
+    categoria: "HTML",
+    domanda: "Quale attributo HTML viene utilizzato per definire gli stili in linea (inline)?",
+    opzioni: ["class", "styles", "style", "font"],
+    rispostaCorretta: "style",
+    tempo: 10
   },
   {
-    question: "Il logo di Snapchat è una campana.",
-    correct_answer: "Falso",
-    incorrect_answers: ["Vero"],
+    id: 3,
+    categoria: "CSS",
+    domanda: "Quale proprietà CSS viene utilizzata per cambiare il colore del testo di un elemento?",
+    opzioni: ["text-color", "color", "font-color", "background-color"],
+    rispostaCorretta: "color",
+    tempo: 12
   },
   {
-    question:
-      "I puntatori sono stati introdotti in C++ e non c'erano nel linguaggio C originale.",
-    correct_answer: "Falso",
-    incorrect_answers: ["Vero"],
+    id: 4,
+    categoria: "CSS",
+    domanda: "In CSS, come si seleziona un elemento con id 'principale'?",
+    opzioni: [".principale", "#principale", "*principale", "id:principale"],
+    rispostaCorretta: "#principale",
+    tempo: 10
   },
   {
-    question:
-      "Qual è il formato immagine più usato per i loghi nel database di Wikimedia?",
-    correct_answer: ".svg",
-    incorrect_answers: [".png", ".jpeg", ".gif"],
+    id: 5,
+    categoria: "JavaScript",
+    domanda: "Come si dichiara una variabile che non può essere riassegnata in JavaScript moderno?",
+    opzioni: ["var", "let", "const", "static"],
+    rispostaCorretta: "const",
+    tempo: 15
   },
   {
-    question: "Cosa significa l'acronimo CSS?",
-    correct_answer: "Cascading Style Sheets",
-    incorrect_answers: [
-      "Counter Strike: Source",
-      "Corrective Style Sheets",
-      "Computer Style Sheets",
-    ],
+    id: 6,
+    categoria: "JavaScript",
+    domanda: "Quale metodo viene utilizzato per aggiungere un elemento alla fine di un array?",
+    opzioni: ["push()", "pop()", "shift()", "unshift()"],
+    rispostaCorretta: "push()",
+    tempo: 12
   },
   {
-    question: "Qual è il nome in codice del sistema operativo Android 7.0?",
-    correct_answer: "Nougat",
-    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
-  },
-  {
-    question: "Qual era il limite originale di caratteri di un Tweet?",
-    correct_answer: "140",
-    incorrect_answers: ["120", "160", "100"],
-  },
-  {
-    question: "Linux è stato creato come alternativa a Windows XP.",
-    correct_answer: "Falso",
-    incorrect_answers: ["Vero"],
-  },
-  {
-    question:
-      "Quale linguaggio di programmazione condivide il nome con un'isola dell'Indonesia?",
-    correct_answer: "Java",
-    incorrect_answers: ["Python", "C", "Jakarta"],
-  },
+    id: 7,
+    categoria: "JavaScript",
+    domanda: "Cosa restituisce l'espressione `typeof []` in JavaScript?",
+    opzioni: ["array", "object", "list", "undefined"],
+    rispostaCorretta: "object",
+    tempo: 20
+  }
 ];
 
 /* Costanti del quiz */

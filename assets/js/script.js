@@ -78,7 +78,7 @@ const ritardoFeedback = 1500;   // ms di attesa dopo risposta prima di avanzare
 
 /* Stato globale */
 let schermataAttiva = "welcome"; // "welcome" | "quiz" | "results"
-let indiceDomanda = 0;
+let indiceDomanda = 0; //usato per caricaProssimaDomanda
 let punteggio = 0;
 let idTimer = null;
 
@@ -97,6 +97,9 @@ function gestisciRisposta()  {}; // Francesco
    - advance() per andare alla domanda successiva o ai risultati
 */
 
+
+
+//NICHOLAS
 //creare section con html con id diversi tutte le section devono avere la classe (schermata) la pagina del quiz e la pagina finale devono avere la classe (nascosto)
 //creare classe nascosto in css con display: none;
 function mostraSchermataGiusta(idSchermata) {  //FUNZIONE PER CAMBIARE SCHERMATA IN SPA PASSARE ID DELLA SCHERMATA
@@ -110,3 +113,4 @@ if(schermataDaMostrare) {
   };
 };
 //vediamo la pagina iniziale giusta grazie alla classe css .nascosto assegnata alle 2 che vogliamo nascondere
+

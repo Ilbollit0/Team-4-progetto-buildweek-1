@@ -13,6 +13,11 @@
    - correct_answer: la risposta corretta (string)
    - incorrect_answers: array di risposte sbagliate (string[])
 */
+const contatore = document.querySelector('#contatoreDomande')
+
+
+
+
 const quizDomande = [
   {
     id: 1,
@@ -114,3 +119,8 @@ if(schermataDaMostrare) {
 };
 //vediamo la pagina iniziale giusta grazie alla classe css .nascosto assegnata alle 2 che vogliamo nascondere
 
+
+//contatore domande: Giuseppe
+function aggiornaContatore() {
+  contatore.textContent = `Domanda ${indiceDomanda + 1} di ${quizDomande.length}`;
+}

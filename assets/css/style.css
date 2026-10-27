@@ -39,24 +39,58 @@ body {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
-/* [Gabriel] timer normale: "pillola" grigia con i secondi in grassetto */
-.tempoRimasto {
+/* [Gabriel] TIMER ROTONDO: anello che si accorcia ogni secondo, rosso da 5 a 0 */
+.timerRotondo {
+  position: relative; /* i secondi si posizionano sopra il cerchio */
   display: inline-block;
-  min-width: 56px;
-  padding: 6px 14px;
-  border-radius: 20px;
-  background-color: #f1f0f7;
-  color: #1b2045;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-  transition: background-color 0.3s, color 0.3s;
+  width: 64px;  /* misura del timer: si cambia solo qui (e nel line-height sotto) */
+  height: 64px;
 }
 
-/* [Gabriel] ultimi 5 secondi: il timer diventa rosso fino allo 0.
-   .tempoRimasto.ultimiSecondi è più specifico di .tempoRimasto, quindi vince sempre */
-.tempoRimasto.ultimiSecondi {
-  background-color: #fde2e2;
+/* [Gabriel] il cerchio SVG riempie il contenitore; ruotato di -90° così la barra parte dall'alto */
+.cerchiTimer {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+/* [Gabriel] in SVG il colore della linea si chiama "stroke", lo spessore "stroke-width" */
+.cerchioSfondo,
+.cerchioAvanzamento {
+  fill: none;
+  stroke-width: 6;
+}
+
+/* [Gabriel] anello grigio di sfondo: resta sempre pieno */
+.cerchioSfondo {
+  stroke: #f1f0f7;
+}
+
+/* [Gabriel] anello che scende: solo la discesa è morbida, il rosso arriva subito */
+.cerchioAvanzamento {
+  stroke: #6c4bf4;
+  transition: stroke-dashoffset 1s linear;
+}
+
+/* [Gabriel] i secondi al centro del cerchio */
+.timerRotondo .tempoRimasto {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  line-height: 64px; /* uguale all'altezza del timer: centra il numero in verticale */
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #1b2045;
+}
+
+/* [Gabriel] ultimi 5 secondi: anello e numero rossi fino allo 0 */
+.timerRotondo.ultimiSecondi .cerchioAvanzamento {
+  stroke: #d32f2f;
+}
+
+.timerRotondo.ultimiSecondi .tempoRimasto {
   color: #d32f2f;
 }
 

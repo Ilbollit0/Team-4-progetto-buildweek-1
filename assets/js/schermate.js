@@ -36,4 +36,4 @@ function mostraBenvenuto() {
     schermataAttiva = "quiz";
     mostraSchermataGiusta("domande");
   });
-};
+}

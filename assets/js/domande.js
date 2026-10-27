@@ -1,10 +1,9 @@
-
+//FRANCESCO
 // Creo una costante per selezionare il contenitore main html
 const app = document.querySelector("#app");
-
 function renderQuiz() {
     //costante per tenere traccia della domanda che verra visualizzata dall'array quizDomande
-    const domandaCorrente = quizDomande[currentQuestion];
+     let domandaCorrente = domandeMischiate[indiceDomanda];
 
     //Creazione degli elementi html per la visualizzazione
     const contenitore = document.createElement("section"); //contenitore che contiene tutta la visualizzazione della domanda
@@ -27,9 +26,9 @@ function renderQuiz() {
     // recupero la categoria della domanda corrente e la scrivo nell'elemento categoria creato in precedenza
     categoria.textContent = domandaCorrente.categoria;
     //aggiorno il contatore
-    contatore.textContent = `DOMANDA ${currentQuestion + 1} DI ${quizDomande.length}`;
+    contatore.textContent = `DOMANDA ${indiceDomanda + 1} DI ${quizDomande.length}`;
     //visualizzazione del tempo 
-    timer.textContent = `${domandaCorrente.tempo}s`;
+    timer.textContent = `${tempoRestante}s`;
     //visualizzazione del testo della domanda 
     domanda.textContent = domandaCorrente.domanda;
     //raggruppo gli elementi nell'intestazione <div> 
@@ -67,11 +66,10 @@ function renderQuiz() {
     app.replaceChildren(contenitore);
 }
 
-renderQuiz();
-
-
-const contatore = document.createElement('p')
 //contatore domande: Giuseppe
+const sezioneDomande = document.querySelector('#domande');
+const contatore = document.createElement('p');
 function aggiornaContatore() {
     contatore.textContent = `Domanda ${indiceDomanda + 1} di ${quizDomande.length}`;
 }
+sezioneDomande.appendChild(contatore);

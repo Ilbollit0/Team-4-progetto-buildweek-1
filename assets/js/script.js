@@ -21,176 +21,57 @@ const quizDomande = [
   {
     id: 1,
     categoria: "HTML",
-    domanda: "Quale tag HTML rappresenta il livello di intestazione più importante nel contenuto di una pagina?",
-    opzioni: ["<h6>", "<header>", "<h1>", "<head>"],
-    rispostaCorretta: "<h1>",
+    domanda: "Qual è il tag HTML corretto per inserire un collegamento ipertestuale (link)?",
+    opzioni: ["<link>", "<a>", "<href>", "<url>"],
+    rispostaCorretta: "<a>",
     tempo: 15
   },
   {
     id: 2,
     categoria: "HTML",
-    domanda: "Quale attributo del tag <img> contiene il testo alternativo mostrato se l'immagine non si carica?",
-    opzioni: ["alt", "src", "title", "href"],
-    rispostaCorretta: "alt",
-    tempo: 15
-  },
-  {
-    id: 3,
-    categoria: "HTML",
-    domanda: "Quale tag HTML si usa per creare una lista non ordinata (con i pallini)?",
-    opzioni: ["<ol>", "<li>", "<dl>", "<ul>"],
-    rispostaCorretta: "<ul>",
+    domanda: "Quale attributo HTML viene utilizzato per definire gli stili in linea (inline)?",
+    opzioni: ["class", "styles", "style", "font"],
+    rispostaCorretta: "style",
     tempo: 10
   },
   {
+    id: 3,
+    categoria: "CSS",
+    domanda: "Quale proprietà CSS viene utilizzata per cambiare il colore del testo di un elemento?",
+    opzioni: ["text-color", "color", "font-color", "background-color"],
+    rispostaCorretta: "color",
+    tempo: 12
+  },
+  {
     id: 4,
-    categoria: "HTML",
-    domanda: "Cosa indica la dichiarazione <!DOCTYPE html> all'inizio di una pagina?",
-    opzioni: [
-      "Che il browser deve eseguire JavaScript",
-      "Che il documento è scritto in HTML5",
-      "Il titolo della pagina",
-      "La lingua della pagina"
-    ],
-    rispostaCorretta: "Che il documento è scritto in HTML5",
-    tempo: 20
+    categoria: "CSS",
+    domanda: "In CSS, come si seleziona un elemento con id 'principale'?",
+    opzioni: [".principale", "#principale", "*principale", "id:principale"],
+    rispostaCorretta: "#principale",
+    tempo: 10
   },
   {
     id: 5,
-    categoria: "HTML",
-    domanda: "Quale attributo rende obbligatorio un campo <input> prima dell'invio del form?",
-    opzioni: ["mandatory", "validate", "required", "needed"],
-    rispostaCorretta: "required",
+    categoria: "JavaScript",
+    domanda: "Come si dichiara una variabile che non può essere riassegnata in JavaScript moderno?",
+    opzioni: ["var", "let", "const", "static"],
+    rispostaCorretta: "const",
     tempo: 15
   },
   {
     id: 6,
-    categoria: "HTML",
-    domanda: "Quale tag HTML5 è pensato per il contenuto principale e unico di una pagina?",
-    opzioni: ["<main>", "<section>", "<article>", "<div>"],
-    rispostaCorretta: "<main>",
-    tempo: 15
+    categoria: "JavaScript",
+    domanda: "Quale metodo viene utilizzato per aggiungere un elemento alla fine di un array?",
+    opzioni: ["push()", "pop()", "shift()", "unshift()"],
+    rispostaCorretta: "push()",
+    tempo: 12
   },
   {
     id: 7,
-    categoria: "CSS",
-    domanda: "Quale proprietà CSS controlla lo spazio tra il contenuto di un elemento e il suo bordo?",
-    opzioni: ["margin", "border-spacing", "gap", "padding"],
-    rispostaCorretta: "padding",
-    tempo: 15
-  },
-  {
-    id: 8,
-    categoria: "CSS",
-    domanda: "Quale valore di display trasforma un contenitore in un contenitore flessibile (flexbox)?",
-    opzioni: ["block", "flex", "inline", "float"],
-    rispostaCorretta: "flex",
-    tempo: 10
-  },
-  {
-    id: 9,
-    categoria: "CSS",
-    domanda: "Quale selettore CSS seleziona tutti gli elementi con class=\"bottone\"?",
-    opzioni: ["#bottone", "bottone", ".bottone", "*bottone"],
-    rispostaCorretta: ".bottone",
-    tempo: 10
-  },
-  {
-    id: 10,
-    categoria: "CSS",
-    domanda: "Quale proprietà CSS arrotonda gli angoli di un elemento?",
-    opzioni: ["border-radius", "corner-style", "round-corner", "box-round"],
-    rispostaCorretta: "border-radius",
-    tempo: 10
-  },
-  {
-    id: 11,
-    categoria: "CSS",
-    domanda: "Quale pseudo-classe CSS si applica quando il mouse passa sopra un elemento?",
-    opzioni: [":active", ":focus", ":visited", ":hover"],
-    rispostaCorretta: ":hover",
-    tempo: 10
-  },
-  {
-    id: 12,
-    categoria: "CSS",
-    domanda: "Cosa fa la regola box-sizing: border-box?",
-    opzioni: [
-      "Aggiunge un bordo a tutti gli elementi",
-      "Include padding e bordo nella larghezza e nell'altezza dichiarate",
-      "Toglie il margine all'elemento",
-      "Rende l'elemento più grande del suo contenitore"
-    ],
-    rispostaCorretta: "Include padding e bordo nella larghezza e nell'altezza dichiarate",
-    tempo: 20
-  },
-  {
-    id: 13,
     categoria: "JavaScript",
-    domanda: "Quale metodo converte una stringa JSON in un oggetto JavaScript?",
-    opzioni: ["JSON.stringify()", "JSON.object()", "JSON.parse()", "JSON.convert()"],
-    rispostaCorretta: "JSON.parse()",
-    tempo: 15
-  },
-  {
-    id: 14,
-    categoria: "JavaScript",
-    domanda: "Qual è il risultato dell'espressione '5' + 3 in JavaScript?",
-    opzioni: ["53", "8", "NaN", "undefined"],
-    rispostaCorretta: "53",
-    tempo: 15
-  },
-  {
-    id: 15,
-    categoria: "JavaScript",
-    domanda: "Quale operatore confronta valore e tipo senza fare conversioni?",
-    opzioni: ["==", "=", "!=", "==="],
-    rispostaCorretta: "===",
-    tempo: 10
-  },
-  {
-    id: 16,
-    categoria: "JavaScript",
-    domanda: "Quale metodo degli array crea un nuovo array applicando una funzione a ogni elemento?",
-    opzioni: ["forEach()", "map()", "filter()", "pop()"],
-    rispostaCorretta: "map()",
-    tempo: 15
-  },
-  {
-    id: 17,
-    categoria: "JavaScript",
-    domanda: "Quale metodo restituisce il primo elemento della pagina che corrisponde a un selettore CSS?",
-    opzioni: ["getElementsByClassName()", "getElement()", "querySelector()", "selectFirst()"],
-    rispostaCorretta: "querySelector()",
-    tempo: 15
-  },
-  {
-    id: 18,
-    categoria: "JavaScript",
-    domanda: "Quale metodo collega una funzione a un evento (per esempio il click) di un elemento?",
-    opzioni: ["addEventListener()", "onEvent()", "listen()", "attachClick()"],
-    rispostaCorretta: "addEventListener()",
-    tempo: 15
-  },
-  {
-    id: 19,
-    categoria: "JavaScript",
-    domanda: "Quale funzione ripete un'azione a intervalli regolari di tempo?",
-    opzioni: ["setTimeout()", "repeat()", "delay()", "setInterval()"],
-    rispostaCorretta: "setInterval()",
-    tempo: 10
-  },
-  {
-    id: 20,
-    categoria: "JavaScript",
-    domanda: "Cosa restituisce Math.random()?",
-    opzioni: [
-      "Un intero casuale tra 0 e 10",
-      "Un numero decimale casuale tra 0 (incluso) e 1 (escluso)",
-      "Un array mescolato",
-      "Un numero casuale tra 1 e 100"
-    ],
-    rispostaCorretta: "Un numero decimale casuale tra 0 (incluso) e 1 (escluso)",
+    domanda: "Cosa restituisce l'espressione `typeof []` in JavaScript?",
+    opzioni: ["array", "object", "list", "undefined"],
+    rispostaCorretta: "object",
     tempo: 20
   }
 ];
@@ -238,4 +119,4 @@ if(schermataDaMostrare) {
 //vediamo la pagina iniziale giusta grazie alla classe css .nascosto assegnata alle 2 che vogliamo nascondere
 
 
-}
+

@@ -366,7 +366,7 @@ tuttiIBottoni.forEach(btn => {
  //possibilita' di unire i due forEach
   tuttiIBottoni.forEach(btn => {   //assegna classe cerretto per illuminare risposta giusta allo scadere
     if (btn.dataset.testoRisposta === domanda.rispostaCorretta) {  //verifichiamo la risposta giusta e gli diamo la classe
-      btn.classList.add('corretto'); //cambiare col nome della classe assegnata alle risposte corrette
+      btn.classList.add('corretta'); //cambiare col nome della classe assegnata alle risposte corrette
     }
   });
 // Aspetta 2 secondi e richiama caricaProssimaDomanda 
@@ -430,6 +430,13 @@ function renderQuiz() {
         const bottone = document.createElement("button"); // bottone 
         const lettera = document.createElement("span"); // visualizzazione della lettera, esempio A risposta. B risposta. ecc.
         const testoRisposta = document.createElement("span");
+
+        //assgnazione classe ai bottoni
+
+        bottone.classList.add('rispostaQuiz');
+        lettera.classList.add('letteraRisposta');
+        testoRisposta.classList.add('testoRisposta');
+        bottone.dataset.testoRisposta = risposta //ogni bottone memorizza il contenuto che ha
 
         //in questa istruzione sto dicendo di prendere il codice asci della lettera A quindi 65, e di sommarci l'indice
         //quindi avremo che a indice zero corrisponde la A, a indice 1 corrisponde la B e cosi via

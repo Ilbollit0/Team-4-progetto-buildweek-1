@@ -307,7 +307,7 @@ console.log(domandeMischiate);
 
 function caricaProssimaDomanda() { //NICHOLAS
   if (indiceDomanda <= 9) {  // stampiamo solo le prime 10 domande 
-    renderQuiz();
+
     const domandaCorrente = domandeMischiate[indiceDomanda];  // Prende la domanda corrente
     console.log(`Domanda: "${domandaCorrente.domanda}" | Tempo: ${domandaCorrente.tempo}s`); // console di controllo
     // Avvia il timer usando il tempo specifico della domandaCorrente
@@ -315,6 +315,7 @@ function caricaProssimaDomanda() { //NICHOLAS
     avviaTimer(domandaCorrente.tempo, () => {    //richiama AvviaQuizTimer che a sua volta richiama caricaProssimaDomanda fino ad uscire dall if 
       console.log("Tempo scaduto per questa domanda!"); //Controllo azzeramento timer
       gestisciTempoScaduto(); // gestisce il btn che si ullima se non dai risposta in contatore e richiama la prossima domanda
+      renderQuiz();
     });
   } else {
     //controllo fine array
@@ -401,7 +402,7 @@ function gestisciRisposta(bottone, rispostaCliccata) {
       }
     });
   }
-  setTimeout(() =>{
+  setTimeout(() => {
     indiceDomanda++;
     caricaProssimaDomanda();
   }, ritardoFeedback);
@@ -438,7 +439,7 @@ function renderQuiz() {
 
   //visualizzazione del tempo 
   timer.textContent = `${domandaCorrente.tempo}s`;
-    timer.textContent = `${tempoRestante}s`;
+  timer.textContent = `${tempoRestante}s`;
   //visualizzazione del testo della domanda 
   domanda.textContent = domandaCorrente.domanda;
   //raggruppo gli elementi nell'intestazione <div> 

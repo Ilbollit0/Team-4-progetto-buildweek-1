@@ -27,6 +27,7 @@ function renderQuiz() {
     categoria.textContent = domandaCorrente.categoria;
     //aggiorno il contatore
     contatore.textContent = `DOMANDA ${indiceDomanda + 1} DI ${quizDomande.length}`;
+    
     //visualizzazione del tempo 
     timer.textContent = `${tempoRestante}s`;
     //visualizzazione del testo della domanda 
@@ -67,9 +68,9 @@ function renderQuiz() {
 }
 
 //contatore domande: Giuseppe
-const sezioneDomande = document.querySelector('#domande');
-const contatore = document.createElement('p');
-function aggiornaContatore() {
-    contatore.textContent = `Domanda ${indiceDomanda + 1} di ${quizDomande.length}`;
-}
-sezioneDomande.appendChild(contatore);
+// const sezioneDomande = document.querySelector('#domande');
+// const contatore = document.createElement('p');
+// function aggiornaContatore() {
+//     contatore.textContent = `Domanda ${indiceDomanda + 1} di ${quizDomande.length}`;
+// }
+// sezioneDomande.appendChild(contatore);

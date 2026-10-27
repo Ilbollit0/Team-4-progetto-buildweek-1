@@ -314,8 +314,8 @@ function caricaProssimaDomanda() { //NICHOLAS
     //funzione anonima usata in avviaQuizTime 
     avviaTimer(domandaCorrente.tempo, () => {    //richiama AvviaQuizTimer che a sua volta richiama caricaProssimaDomanda fino ad uscire dall if 
       console.log("Tempo scaduto per questa domanda!"); //Controllo azzeramento timer
-      gestisciTempoScaduto(); // gestisce il btn che si ullima se non dai risposta in contatore e richiama la prossima domanda
       renderQuiz();
+      gestisciTempoScaduto(); // gestisce il btn che si ullima se non dai risposta in contatore e richiama la prossima domanda
     });
   } else {
     //controllo fine array
@@ -336,7 +336,6 @@ function avviaTimer(durataInSecondi, onTempoScaduto) {  //secondo parametro = fu
     console.log(`Tempo restante: ${tempoRestante}s`);
 
     renderQuiz();
-
     if (tempoRestante <= 0) {  //
       fermaTimer();
 
@@ -487,8 +486,8 @@ function renderQuiz() {
       gestisciRisposta(bottone, risposta);
     });
 
-    sezioneDomande.replaceChildren(contenitore);
   });
+  sezioneDomande.replaceChildren(contenitore);
 }
 //contatore domande: Giuseppe
 // const sezioneDomande = document.querySelector('#domande');

@@ -4,7 +4,7 @@ const app = document.querySelector("#app");
 
 function renderQuiz() {
     //costante per tenere traccia della domanda che verra visualizzata dall'array quizDomande
-    const domandaCorrente = quizDomande[currentQuestion];
+     const domandaCorrente = quizDomande[currentQuestion];
 
     //Creazione degli elementi html per la visualizzazione
     const contenitore = document.createElement("section"); //contenitore che contiene tutta la visualizzazione della domanda
@@ -59,3 +59,11 @@ function renderQuiz() {
 }
 
 renderQuiz();
+
+//contatore domande: Giuseppe
+const sezioneDomande = document.querySelector('#domande');
+const contatore = document.createElement('p');
+function aggiornaContatore() {
+  contatore.textContent = `Domanda ${indiceDomanda + 1} di ${quizDomande.length}`;
+}
+sezioneDomande.appendChild(contatore);

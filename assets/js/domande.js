@@ -1,4 +1,4 @@
-
+//FRANCESCO
 // Creo una costante per selezionare il contenitore main html
 const app = document.querySelector("#app");
 
@@ -20,7 +20,7 @@ function renderQuiz() {
     //aggiorno il contatore
     contatore.textContent = `DOMANDA ${currentQuestion + 1} DI ${quizDomande.length}`;
     //visualizzazione del tempo 
-    timer.textContent = `${domandaCorrente.tempo}s`;
+    timer.textContent = `${tempoRestante}s`;
     //visualizzazione del testo della domanda 
     domanda.textContent = domandaCorrente.domanda;
     //raggruppo gli elementi nell'intestazione <div> 

@@ -60,9 +60,10 @@ function renderQuiz() {
 
 renderQuiz();
 
-
-const contatore = document.createElement('p')
 //contatore domande: Giuseppe
+const sezioneDomande = document.querySelector('#domande');
+const contatore = document.createElement('p')
 function aggiornaContatore() {
   contatore.textContent = `Domanda ${indiceDomanda + 1} di ${quizDomande.length}`;
 }
+sezioneDomande.appendChild(contatore);

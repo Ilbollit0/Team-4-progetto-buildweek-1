@@ -324,7 +324,6 @@ function caricaProssimaDomanda() { //NICHOLAS
 
 
 
-
 //NICHOLAS                                             // primo parametro = quanti secondi sono passati
 function avviaTimer(durataInSecondi, onTempoScaduto) {  //secondo parametro = funzione da richiamare allo scadere del tempo overo caricaProssimaDomanda
   fermaTimer();
@@ -438,7 +437,8 @@ function renderQuiz() {
   contatore.textContent = `DOMANDA ${indiceDomanda + 1} DI 10`;
 
   //visualizzazione del tempo 
-  timer.textContent = `${tempoRestante}s`;
+  timer.textContent = `${domandaCorrente.tempo}s`;
+    timer.textContent = `${tempoRestante}s`;
   //visualizzazione del testo della domanda 
   domanda.textContent = domandaCorrente.domanda;
   //raggruppo gli elementi nell'intestazione <div> 

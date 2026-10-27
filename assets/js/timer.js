@@ -1,3 +1,21 @@
+function mescolaArray(array) {  //NICHOLAS
+  for (let i = array.length - 1; i > 0; i--) {        // usiamo Math.floor() per arrotondare per difetto e rendere il numero un  intero
+                                                      //math.random() lu usiamo per estrarre il numero decimale casuale e lo moltiplichiamo per i + 1 altrimenti non peschiamo l'ultimo elemento 
+    const j = Math.floor(Math.random() * (i + 1)); //usata come indice casuale  usiamo i + 1 in modo da poter estrarre l'ultimo elemento dell'array 
+    [array[i], array[j]] = [array[j], array[i]]; //prendiamo l'ultimoo elemento dell array e lo scambiamo di posto con un elemento con indice j (j-pescata casualmente)
+  }                                              //al secondo giro prendiamo il penultimo e cosi via
+  return array;
+}
+// Creiamo una copia e la mescoliamo subito all'avvio della pagina
+let domandeMischiate = mescolaArray([...quizDomande]);
+//trasformiano l array con .map() utilizzando mescolaArray anche sulle risposte
+domandeMischiate = domandeMischiate.map( domanda => ({
+  ...domanda,
+  opzioni:mescolaArray([...domanda.opzioni])
+}));
+console.log(domandeMischiate);
+                                                      
+                                                      
 
 
 

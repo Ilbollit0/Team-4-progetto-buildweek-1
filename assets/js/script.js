@@ -358,7 +358,7 @@ function fermaTimer() { //NICHOLAS
 // illumina risposta esatta allo scadere se nessun btn e stato premuto e passa alla prossima domanda funzione da richiamare in caricaProssimaDomanda
 function gestisciTempoScaduto() {  //NICHOLAS
   let domanda = domandeMischiate[indiceDomanda];
-  const tuttiIBottoni = document.querySelectorAll('.soluzione');  //selezioniamo tutti i btn cambiare classe con la classe assegnata da francesco in renderQuiz()
+  const tuttiIBottoni = document.querySelectorAll('.rispostaQuiz');  //selezioniamo tutti i btn cambiare classe con la classe assegnata da francesco in renderQuiz()
 
   tuttiIBottoni.forEach(btn => {
     btn.disabled = true; // disattiva i btn
@@ -380,8 +380,10 @@ function gestisciTempoScaduto() {  //NICHOLAS
 //FRANCESCO
 // Creo una costante per selezionare il contenitore main html
 
-function gestisciRisposta(bottoneCliccato, rispostaCliccata) {
+function gestisciRisposta(bottone, rispostaCliccata) {
   fermaTimer();
+
+  const tuttiIBottoni = document.querySelectorAll('.rispostaQuiz');
 
   let domanda = domandeMischiate[indiceDomanda];
 
@@ -400,7 +402,13 @@ function gestisciRisposta(bottoneCliccato, rispostaCliccata) {
       }
     });
   }
+  setTimeout(() =>{
+    indiceDomanda++;
+    caricaProssimaDomanda();
+  }, ritardoFeedback);
+
 }
+
 
 function renderQuiz() {
   //costante per tenere traccia della domanda che verra visualizzata dall'array quizDomande

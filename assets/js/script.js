@@ -238,4 +238,4 @@ if(schermataDaMostrare) {
 //vediamo la pagina iniziale giusta grazie alla classe css .nascosto assegnata alle 2 che vogliamo nascondere
 
 
-}
+

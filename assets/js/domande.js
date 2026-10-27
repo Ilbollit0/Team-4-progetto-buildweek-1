@@ -15,6 +15,15 @@ function renderQuiz() {
     const domanda = document.createElement("h2"); // Domanda
     const listaRisposte = document.createElement("div"); //possibili risposte
 
+    /*[Manuel]*/
+    contenitore.classList.add("quiz");
+    intestazione.classList.add("intestazioneQuiz");
+    contatore.classList.add("contatoreQuiz");
+    timer.classList.add("tempoRimasto");      // già stilizzata da Gabriel in CSS
+    categoria.classList.add("categoriaQuiz");
+    domanda.classList.add("domandaQuiz");
+    listaRisposte.classList.add("listaRisposte");
+
     // recupero la categoria della domanda corrente e la scrivo nell'elemento categoria creato in precedenza
     categoria.textContent = domandaCorrente.categoria;
     //aggiorno il contatore
@@ -33,7 +42,7 @@ function renderQuiz() {
         domanda,
         listaRisposte
     );
-    
+
     //utilizzo foreach per eseguire la funzione una volta per ogni elemento "opzioni" dell'array opzioni
     //risposta = stringa 
     // indice = indice a cui corrisponde la risposta nell'array opzioni
@@ -41,8 +50,8 @@ function renderQuiz() {
         //creo gli elementi 
         const bottone = document.createElement("button"); // bottone 
         const lettera = document.createElement("span"); // visualizzazione della lettera, esempio A risposta. B risposta. ecc.
-        const testoRisposta = document.createElement("span"); 
-        
+        const testoRisposta = document.createElement("span");
+
         //in questa istruzione sto dicendo di prendere il codice asci della lettera A quindi 65, e di sommarci l'indice
         //quindi avremo che a indice zero corrisponde la A, a indice 1 corrisponde la B e cosi via
         lettera.textContent = String.fromCharCode(65 + indice);
@@ -64,5 +73,5 @@ renderQuiz();
 const contatore = document.createElement('p')
 //contatore domande: Giuseppe
 function aggiornaContatore() {
-  contatore.textContent = `Domanda ${indiceDomanda + 1} di ${quizDomande.length}`;
+    contatore.textContent = `Domanda ${indiceDomanda + 1} di ${quizDomande.length}`;
 }

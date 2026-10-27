@@ -307,14 +307,13 @@ console.log(domandeMischiate);
 
 function caricaProssimaDomanda() { //NICHOLAS
   if (indiceDomanda <= 9) {  // stampiamo solo le prime 10 domande 
-
     const domandaCorrente = domandeMischiate[indiceDomanda];  // Prende la domanda corrente
-    console.log(`Domanda: "${domandaCorrente.domanda}" | Tempo: ${domandaCorrente.tempo}s`); // console di controllo
+    tempoRestante = domandaCorrente.tempo //impostiamo il tempo della domanda giusta
+    console.log(`Domanda: "${domandaCorrente.domanda}" | Tempo: ${tempoRestante}s`); // console di controllo
+    renderQuiz();
     // Avvia il timer usando il tempo specifico della domandaCorrente
-    //funzione anonima usata in avviaQuizTime 
     avviaTimer(domandaCorrente.tempo, () => {    //richiama AvviaQuizTimer che a sua volta richiama caricaProssimaDomanda fino ad uscire dall if 
       console.log("Tempo scaduto per questa domanda!"); //Controllo azzeramento timer
-      renderQuiz();
       gestisciTempoScaduto(); // gestisce il btn che si ullima se non dai risposta in contatore e richiama la prossima domanda
     });
   } else {
@@ -335,7 +334,14 @@ function avviaTimer(durataInSecondi, onTempoScaduto) {  //secondo parametro = fu
     tempoRestante--;
     console.log(`Tempo restante: ${tempoRestante}s`);
 
-    renderQuiz();
+    const elementoTimer = document.querySelector('.tempoRimasto');  // assegnare classe al timer o aggiornare se ggia ha una classe
+    if(elementoTimer){
+      elementoTimer.textContent = `${tempoRestante}s`
+    }
+    if(tempoRestante <= 5) {
+      elementoTimer.classList.add('tempoRosso')  //cambiare con classe creata in css per il timer quasi scaduto
+    }
+    
     if (tempoRestante <= 0) {  //
       fermaTimer();
 

@@ -504,7 +504,7 @@ function renderQuiz() {
 //     contatore.textContent = `Domanda ${indiceDomanda + 1} di ${quizDomande.length}`;
 // }
 // sezioneDomande.appendChild(contatore);
-//Giuseppe function mostraRisultati();
+//Giuseppe function schermataFinale();
 function schermataFinale() {
 const paginaFinale = document.querySelector ('#paginaFinale')
 

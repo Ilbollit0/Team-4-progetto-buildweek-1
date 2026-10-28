@@ -90,9 +90,9 @@ body {
   stroke: #d32f2f;
 }
 
- 
+
   .ultimiSecondi {color: #d32f2f;
-}
+  }
 
 /* [Luca] Pagina iniziale e pagina finale.
    Le <section> #paginaIniziale e #paginaFinale sono già in index.html: il JS genera solo

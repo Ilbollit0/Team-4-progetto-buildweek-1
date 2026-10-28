@@ -24,7 +24,7 @@ const quizDomande = [
     domanda: "Quale tag HTML rappresenta il livello di intestazione più importante nel contenuto di una pagina?",
     opzioni: ["<h6>", "<header>", "<h1>", "<head>"],
     rispostaCorretta: "<h1>",
-    tempo: 15
+    tempo: 20
   },
   {
     id: 2,
@@ -32,7 +32,7 @@ const quizDomande = [
     domanda: "Quale attributo del tag <img> contiene il testo alternativo mostrato se l'immagine non si carica?",
     opzioni: ["alt", "src", "title", "href"],
     rispostaCorretta: "alt",
-    tempo: 15
+    tempo: 20
   },
   {
     id: 3,
@@ -40,7 +40,7 @@ const quizDomande = [
     domanda: "Quale tag HTML si usa per creare una lista non ordinata (con i pallini)?",
     opzioni: ["<ol>", "<li>", "<dl>", "<ul>"],
     rispostaCorretta: "<ul>",
-    tempo: 10
+    tempo: 20
   },
   {
     id: 4,
@@ -61,7 +61,7 @@ const quizDomande = [
     domanda: "Quale attributo rende obbligatorio un campo <input> prima dell'invio del form?",
     opzioni: ["mandatory", "validate", "required", "needed"],
     rispostaCorretta: "required",
-    tempo: 15
+    tempo: 20
   },
   {
     id: 6,
@@ -69,7 +69,7 @@ const quizDomande = [
     domanda: "Quale tag HTML5 è pensato per il contenuto principale e unico di una pagina?",
     opzioni: ["<main>", "<section>", "<article>", "<div>"],
     rispostaCorretta: "<main>",
-    tempo: 15
+    tempo: 20
   },
   {
     id: 7,
@@ -77,7 +77,7 @@ const quizDomande = [
     domanda: "Quale proprietà CSS controlla lo spazio tra il contenuto di un elemento e il suo bordo?",
     opzioni: ["margin", "border-spacing", "gap", "padding"],
     rispostaCorretta: "padding",
-    tempo: 15
+    tempo: 20
   },
   {
     id: 8,
@@ -85,7 +85,7 @@ const quizDomande = [
     domanda: "Quale valore di display trasforma un contenitore in un contenitore flessibile (flexbox)?",
     opzioni: ["block", "flex", "inline", "float"],
     rispostaCorretta: "flex",
-    tempo: 10
+    tempo: 20
   },
   {
     id: 9,
@@ -93,7 +93,7 @@ const quizDomande = [
     domanda: "Quale selettore CSS seleziona tutti gli elementi con class=\"bottone\"?",
     opzioni: ["#bottone", "bottone", ".bottone", "*bottone"],
     rispostaCorretta: ".bottone",
-    tempo: 10
+    tempo: 20
   },
   {
     id: 10,
@@ -101,7 +101,7 @@ const quizDomande = [
     domanda: "Quale proprietà CSS arrotonda gli angoli di un elemento?",
     opzioni: ["border-radius", "corner-style", "round-corner", "box-round"],
     rispostaCorretta: "border-radius",
-    tempo: 10
+    tempo: 20
   },
   {
     id: 11,
@@ -109,7 +109,7 @@ const quizDomande = [
     domanda: "Quale pseudo-classe CSS si applica quando il mouse passa sopra un elemento?",
     opzioni: [":active", ":focus", ":visited", ":hover"],
     rispostaCorretta: ":hover",
-    tempo: 10
+    tempo: 20
   },
   {
     id: 12,
@@ -130,15 +130,15 @@ const quizDomande = [
     domanda: "Quale metodo converte una stringa JSON in un oggetto JavaScript?",
     opzioni: ["JSON.stringify()", "JSON.object()", "JSON.parse()", "JSON.convert()"],
     rispostaCorretta: "JSON.parse()",
-    tempo: 15
+    tempo: 20
   },
   {
     id: 14,
     categoria: "JavaScript",
     domanda: "Qual è il risultato dell'espressione '5' + 3 in JavaScript?",
-    opzioni: ["53", "8", "NaN", "undefined"],
-    rispostaCorretta: "53",
-    tempo: 15
+    opzioni: ["'53'", "8", "NaN", "undefined"],
+    rispostaCorretta: "'53'",
+    tempo: 20
   },
   {
     id: 15,
@@ -146,7 +146,7 @@ const quizDomande = [
     domanda: "Quale operatore confronta valore e tipo senza fare conversioni?",
     opzioni: ["==", "=", "!=", "==="],
     rispostaCorretta: "===",
-    tempo: 10
+    tempo: 20
   },
   {
     id: 16,
@@ -154,7 +154,7 @@ const quizDomande = [
     domanda: "Quale metodo degli array crea un nuovo array applicando una funzione a ogni elemento?",
     opzioni: ["forEach()", "map()", "filter()", "pop()"],
     rispostaCorretta: "map()",
-    tempo: 15
+    tempo: 20
   },
   {
     id: 17,
@@ -162,7 +162,7 @@ const quizDomande = [
     domanda: "Quale metodo restituisce il primo elemento della pagina che corrisponde a un selettore CSS?",
     opzioni: ["getElementsByClassName()", "getElement()", "querySelector()", "selectFirst()"],
     rispostaCorretta: "querySelector()",
-    tempo: 15
+    tempo: 20
   },
   {
     id: 18,
@@ -170,7 +170,7 @@ const quizDomande = [
     domanda: "Quale metodo collega una funzione a un evento (per esempio il click) di un elemento?",
     opzioni: ["addEventListener()", "onEvent()", "listen()", "attachClick()"],
     rispostaCorretta: "addEventListener()",
-    tempo: 15
+    tempo: 20
   },
   {
     id: 19,
@@ -178,7 +178,7 @@ const quizDomande = [
     domanda: "Quale funzione ripete un'azione a intervalli regolari di tempo?",
     opzioni: ["setTimeout()", "repeat()", "delay()", "setInterval()"],
     rispostaCorretta: "setInterval()",
-    tempo: 10
+    tempo: 20
   },
   {
     id: 20,
@@ -249,7 +249,7 @@ function mostraBenvenuto() {
   //creazione h1 della pagina
   const titoloInziale = document.createElement('h1');
   titoloInziale.classList.add('titoloInziale');
-  titoloInziale.textContent = 'Benvenuto al Quiz!';
+  titoloInziale.textContent = 'Benvenuto al Quiz! 🤗';
 
   //p di presentazione
   const introIniziale = document.createElement('p');
@@ -422,7 +422,7 @@ function gestisciTempoScaduto() {  //NICHOLAS
   setTimeout(() => {
     indiceDomanda++;
     caricaProssimaDomanda();
-  }, 2000);
+  }, 1500);
 }
 
 

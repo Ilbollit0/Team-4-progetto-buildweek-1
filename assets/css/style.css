@@ -90,8 +90,8 @@ body {
   stroke: #d32f2f;
 }
 
-.timerRotondo.ultimiSecondi .tempoRimasto {
-  color: #d32f2f;
+ 
+  .ultimiSecondi {color: #d32f2f;
 }
 
 /* [Luca] Pagina iniziale e pagina finale.

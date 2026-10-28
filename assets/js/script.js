@@ -502,3 +502,18 @@ function renderQuiz() {
 //     contatore.textContent = `Domanda ${indiceDomanda + 1} di ${quizDomande.length}`;
 // }
 // sezioneDomande.appendChild(contatore);
+function mostraRisultati() {
+const paginaFinale = document.querySelector ('#paginaFinale')
+
+const totaleDomande = 10;
+const risposteCorrette = punteggio;
+const risposteSbagliate = totaleDomande - risposteCorrette;
+const percentuale = (risposteCorrette / totaleDomande) * 100;
+
+
+const risultatoPercentuale = document.createElement('h2');
+risultatoPercentuale.classList.add(percentualeFinale);
+risultatoPercentuale.textContent = `${percentuale} %`
+paginaFinale.appendChild(risultatoPercentuale);
+}
+

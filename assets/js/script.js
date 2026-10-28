@@ -566,6 +566,13 @@ barraInternaSbagliate.style.width = `${100 - percentuale}%`
 const risultatoDomandeSbagliate = document.createElement('span');
 risultatoDomandeSbagliate.textContent = `${risposteSbagliate} / 10`
 
+const bottoneRicomincia = document.createElement('button');
+bottoneRicomincia.textContent = 'Ricomincia'
+bottoneRicomincia.classList.add('pulsantePrimario');
+
+
+
+
 barraCorrette.appendChild(barraInternaCorrette);
 contenitoreCorrette.appendChild(percentualeCorrette);
 contenitoreCorrette.appendChild(barraCorrette);
@@ -584,4 +591,10 @@ paginaFinale.appendChild(risultatoPercentuale);
 paginaFinale.appendChild(esitoFinale);
 paginaFinale.appendChild(contenitoreCorrette);
 paginaFinale.appendChild(contenitoreSbagliate);
+
+paginaFinale.appendChild(bottoneRicomincia);
+
+bottoneRicomincia.addEventListener("click", function () {
+  window.location.href = 'index.html'
+  });
 }

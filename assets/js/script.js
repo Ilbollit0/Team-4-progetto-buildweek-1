@@ -521,9 +521,10 @@ const sottotitoloFinale = document.createElement('p');
 sottotitoloFinale.textContent = 'Hai completato il quiz.'
 sottotitoloFinale.classList.add('sottotitoloFinale');
 
+
 const risultatoPercentuale = document.createElement('p');
 risultatoPercentuale.classList.add('percentualeFinale');
-risultatoPercentuale.textContent = `${percentuale} %`
+risultatoPercentuale.textContent = `${percentuale}%`
 
 
 const esitoFinale = document.createElement('p');
@@ -558,21 +559,24 @@ percentualeSbagliate.textContent = 'Sbagliate'
 const barraSbagliate = document.createElement('div');
 const barraInternaSbagliate = document.createElement('div');
 barraSbagliate.classList.add('tracciaBarra');
-barraInternaSbagliate.classList.add('barraCorrette');
+barraInternaSbagliate.classList.add('barraSbagliate');
 
 const risultatoDomandeSbagliate = document.createElement('span');
 risultatoDomandeSbagliate.textContent = `${risposteSbagliate} / 10`
 
 barraCorrette.appendChild(barraInternaCorrette);
-
-barraCorrette.appendChild(barraInternaSbagliate);
 contenitoreCorrette.appendChild(percentualeCorrette);
 contenitoreCorrette.appendChild(barraCorrette);
 contenitoreCorrette.appendChild(risultatoDomandeCorrette);
 
+
+barraSbagliate.appendChild(barraInternaSbagliate);
 contenitoreSbagliate.appendChild(percentualeSbagliate);
 contenitoreSbagliate.appendChild(barraSbagliate);
 contenitoreSbagliate.appendChild(risultatoDomandeSbagliate);
+
+paginaFinale.appendChild(titoloFinale);
+paginaFinale.appendChild(sottotitoloFinale);
 
 paginaFinale.appendChild(risultatoPercentuale);
 paginaFinale.appendChild(esitoFinale);

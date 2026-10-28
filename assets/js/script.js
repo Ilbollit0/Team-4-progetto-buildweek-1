@@ -576,65 +576,6 @@ function schermataFinale() {
   risultatoPercentuale.textContent = `${percentuale}%`
 
 
-<<<<<<< HEAD
-  const esitoFinale = document.createElement('p');
-  esitoFinale.classList.add('esitoFinale');
-  if (punteggio >= 6) {
-    esitoFinale.textContent = 'Promosso 🥳'
-    esitoFinale.classList.add('esitoPromosso');
-  } if (punteggio < 6) {
-    esitoFinale.textContent = 'Bocciato 😩'
-    esitoFinale.classList.add('esitoBocciato');
-  }
-
-
-  const contenitoreCorrette = document.createElement('div');
-
-  const percentualeCorrette = document.createElement('span');
-  percentualeCorrette.textContent = 'Corrette'
-
-  const barraCorrette = document.createElement('div');
-  const barraInternaCorrette = document.createElement('div');
-  barraCorrette.classList.add('tracciaBarra');
-  barraInternaCorrette.classList.add('barraCorrette');
-  barraInternaCorrette.style.width = `${percentuale}%`
-
-  const risultatoDomandeCorrette = document.createElement('span');
-  risultatoDomandeCorrette.textContent = `${risposteCorrette} / 10`
-
-  const contenitoreSbagliate = document.createElement('div');
-
-  const percentualeSbagliate = document.createElement('span');
-  percentualeSbagliate.textContent = 'Sbagliate'
-
-  const barraSbagliate = document.createElement('div');
-  const barraInternaSbagliate = document.createElement('div');
-  barraSbagliate.classList.add('tracciaBarra');
-  barraInternaSbagliate.classList.add('barraSbagliate');
-  barraInternaSbagliate.style.width = `${100 - percentuale}%`
-
-  const risultatoDomandeSbagliate = document.createElement('span');
-  risultatoDomandeSbagliate.textContent = `${risposteSbagliate} / 10`
-
-  barraCorrette.appendChild(barraInternaCorrette);
-  contenitoreCorrette.appendChild(percentualeCorrette);
-  contenitoreCorrette.appendChild(barraCorrette);
-  contenitoreCorrette.appendChild(risultatoDomandeCorrette);
-
-
-  barraSbagliate.appendChild(barraInternaSbagliate);
-  contenitoreSbagliate.appendChild(percentualeSbagliate);
-  contenitoreSbagliate.appendChild(barraSbagliate);
-  contenitoreSbagliate.appendChild(risultatoDomandeSbagliate);
-
-  paginaFinale.appendChild(titoloFinale);
-  paginaFinale.appendChild(sottotitoloFinale);
-
-  paginaFinale.appendChild(risultatoPercentuale);
-  paginaFinale.appendChild(esitoFinale);
-  paginaFinale.appendChild(contenitoreCorrette);
-  paginaFinale.appendChild(contenitoreSbagliate);
-=======
 const esitoFinale = document.createElement('p');
 esitoFinale.classList.add('esitoFinale');
 if ( punteggio >= 6 ) {
@@ -705,5 +646,4 @@ paginaFinale.appendChild(bottoneRicomincia);
 bottoneRicomincia.addEventListener("click", function () {
   window.location.href = 'index.html'
   });
->>>>>>> d9c23e48735b91f81c0566b47695f6bc0004e6bf
 }

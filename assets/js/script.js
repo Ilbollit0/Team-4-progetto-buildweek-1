@@ -318,7 +318,9 @@ function caricaProssimaDomanda() { //NICHOLAS
     });
   } else {
     //controllo fine array
+    schermataFinale();
     mostraSchermataGiusta('paginaFinale');
+    
   }
 }
 
@@ -502,7 +504,8 @@ function renderQuiz() {
 //     contatore.textContent = `Domanda ${indiceDomanda + 1} di ${quizDomande.length}`;
 // }
 // sezioneDomande.appendChild(contatore);
-function mostraRisultati() {
+//Giuseppe function mostraRisultati();
+function schermataFinale() {
 const paginaFinale = document.querySelector ('#paginaFinale')
 
 const totaleDomande = 10;
@@ -510,10 +513,69 @@ const risposteCorrette = punteggio;
 const risposteSbagliate = totaleDomande - risposteCorrette;
 const percentuale = (risposteCorrette / totaleDomande) * 100;
 
+const titoloFinale = document.createElement('h2');
+titoloFinale.textContent = 'Risultati'
+titoloFinale.classList.add('titoloFinale');
 
-const risultatoPercentuale = document.createElement('h2');
-risultatoPercentuale.classList.add(percentualeFinale);
+const sottotitoloFinale = document.createElement('p');
+sottotitoloFinale.textContent = 'Hai completato il quiz.'
+sottotitoloFinale.classList.add('sottotitoloFinale');
+
+const risultatoPercentuale = document.createElement('p');
+risultatoPercentuale.classList.add('percentualeFinale');
 risultatoPercentuale.textContent = `${percentuale} %`
-paginaFinale.appendChild(risultatoPercentuale);
+
+
+const esitoFinale = document.createElement('p');
+esitoFinale.classList.add('esitoFinale');
+if ( punteggio >= 6 ) {
+  esitoFinale.textContent = 'Promosso 🥳'
+  esitoFinale.classList.add('esitoPromosso');
+} if(punteggio < 6) {
+  esitoFinale.textContent = 'Bocciato 😩'
+  esitoFinale.classList.add('esitoBocciato');
 }
 
+
+const contenitoreCorrette = document.createElement('div');
+
+const percentualeCorrette = document.createElement('span');
+percentualeCorrette.textContent = 'Corrette'
+
+const barraCorrette = document.createElement('div');
+const barraInternaCorrette = document.createElement('div');
+barraCorrette.classList.add('tracciaBarra');
+barraInternaCorrette.classList.add('barraCorrette');
+
+const risultatoDomandeCorrette = document.createElement('span');
+risultatoDomandeCorrette.textContent = `${punteggio} / 10`
+
+const contenitoreSbagliate = document.createElement('div');
+
+const percentualeSbagliate = document.createElement('span');
+percentualeSbagliate.textContent = 'Sbagliate'
+
+const barraSbagliate = document.createElement('div');
+const barraInternaSbagliate = document.createElement('div');
+barraSbagliate.classList.add('tracciaBarra');
+barraInternaSbagliate.classList.add('barraCorrette');
+
+const risultatoDomandeSbagliate = document.createElement('span');
+risultatoDomandeSbagliate.textContent = `${risposteSbagliate} / 10`
+
+barraCorrette.appendChild(barraInternaCorrette);
+
+barraCorrette.appendChild(barraInternaSbagliate);
+contenitoreCorrette.appendChild(percentualeCorrette);
+contenitoreCorrette.appendChild(barraCorrette);
+contenitoreCorrette.appendChild(risultatoDomandeCorrette);
+
+contenitoreSbagliate.appendChild(percentualeSbagliate);
+contenitoreSbagliate.appendChild(barraSbagliate);
+contenitoreSbagliate.appendChild(risultatoDomandeSbagliate);
+
+paginaFinale.appendChild(risultatoPercentuale);
+paginaFinale.appendChild(esitoFinale);
+paginaFinale.appendChild(contenitoreCorrette);
+paginaFinale.appendChild(contenitoreSbagliate);
+}

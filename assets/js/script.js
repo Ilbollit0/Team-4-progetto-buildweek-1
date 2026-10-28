@@ -241,35 +241,25 @@ function mostraSchermataGiusta(idSchermata) {  //FUNZIONE PER CAMBIARE SCHERMATA
 };
 //vediamo la pagina iniziale giusta grazie alla classe css .nascosto assegnata alle 2 che vogliamo nascondere
 
-/*
-  [ALESSANDRO]
 
-  Questo file gestisce le schermate iniziale e finale del quiz.
-
-  - mostraBenvenuto(): crea la schermata iniziale e il pulsante "Inizia Quiz"
-  - mostraRisultati(): mostra punteggio, percentuale e risultato finale
-*/
-/*
-  [ALESSANDRO]
-
-  Questo file gestisce la schermata iniziale del quiz.
-
-  - mostraBenvenuto(): crea titolo, descrizione e pulsante "Inizia Quiz"
-  - al click passa alla schermata delle domande
-*/
-
+/*[Manuel, Alessandro, Nicholas, Giuseppe e Gabriel]*/ 
+//funzione mostra pagina iniziale
 function mostraBenvenuto() {
 
+  //creazione h1 della pagina
   const titoloInziale = document.createElement('h1');
   titoloInziale.classList.add('titoloInziale');
   titoloInziale.textContent = 'Benvenuto al Quiz!';
 
+  //p di presentazione
   const introIniziale = document.createElement('p');
   introIniziale.classList.add('introIniziale');
   introIniziale.textContent = 'Metti alla prova le tue conoscenze di HTML, CSS e JavaScript. Per ogni domanda hai 20 secondi!';
 
+  //creazione ul per appenderci i vari li
   const listaIstruzioni = document.createElement('ul');
 
+  //creazione dei vari li per le diverse istruzioni
   const puntiLista = document.createElement('li');
   puntiLista.classList.add('puntiLista');
   puntiLista.textContent = 'Ogni domanda è a tempo e può ricevere una sola risposta.';
@@ -282,21 +272,24 @@ function mostraBenvenuto() {
   punto3.classList.add('puntiLista');
   punto3.textContent = 'Il quiz dura circa 3 minuti.';
 
+  //bottone per iniziare il quiz
   const bottoneInizia = document.createElement("button");
   bottoneInizia.classList.add('pulsantePrimario')
   bottoneInizia.textContent = "Inizia Quiz";
   bottoneInizia.id = "iniziaQuiz";
 
+  //appendiamo i li a ul
   listaIstruzioni.appendChild(puntiLista);
   listaIstruzioni.appendChild(punto2);
   listaIstruzioni.appendChild(punto3);
-
   
+  //appendiamo tutto alla paginaIniziale
   paginaIniziale.appendChild(titoloInziale);
   paginaIniziale.appendChild(introIniziale);
   paginaIniziale.appendChild(listaIstruzioni);
   paginaIniziale.appendChild(bottoneInizia);
 
+  //listener per il click del bottone che fa iniziare le domande
   bottoneInizia.addEventListener("click", function () {
     schermataAttiva = "quiz";
     mostraSchermataGiusta("domande");

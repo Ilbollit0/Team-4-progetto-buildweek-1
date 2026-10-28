@@ -200,6 +200,7 @@ const quizDomande = [
 const sogliaPromozione = 60;     // percentuale minima per "Promosso"
 const ritardoFeedback = 1500;   // ms di attesa dopo risposta prima di avanzare
 const sezioneDomande = document.querySelector('#domande');
+const paginaIniziale = document.querySelector("#paginaIniziale");
 
 /* Stato globale */
 let schermataAttiva = "welcome"; // "welcome" | "quiz" | "results"
@@ -258,6 +259,54 @@ function mostraSchermataGiusta(idSchermata) {  //FUNZIONE PER CAMBIARE SCHERMATA
 */
 
 function mostraBenvenuto() {
+
+  const titoloInziale = document.createElement('h1');
+  titoloInziale.classList.add('titoloInziale');
+  titoloInziale.textContent = 'Benvenuto al Quiz!';
+
+  const introIniziale = document.createElement('p');
+  introIniziale.classList.add('introIniziale');
+  introIniziale.textContent = 'Metti alla prova le tue conoscenze di HTML, CSS e JavaScript. Per ogni domanda hai 20 secondi!';
+
+  const listaIstruzioni = document.createElement('ul');
+
+  const puntiLista = document.createElement('li');
+  puntiLista.classList.add('puntiLista');
+  puntiLista.textContent = 'Ogni domanda è a tempo e può ricevere una sola risposta.';
+
+  const punto2 = document.createElement('li');
+  punto2.classList.add('puntiLista');
+  punto2.textContent = 'Una volta cliccata una risposta non si può cambiare.';
+
+  const punto3 = document.createElement('li');
+  punto3.classList.add('puntiLista');
+  punto3.textContent = 'Il quiz dura circa 3 minuti.';
+
+  const bottoneInizia = document.createElement("button");
+  bottoneInizia.classList.add('pulsantePrimario')
+  bottoneInizia.textContent = "Inizia Quiz";
+  bottoneInizia.id = "iniziaQuiz";
+
+  listaIstruzioni.appendChild(puntiLista);
+  listaIstruzioni.appendChild(punto2);
+  listaIstruzioni.appendChild(punto3);
+
+  
+  paginaIniziale.appendChild(titoloInziale);
+  paginaIniziale.appendChild(introIniziale);
+  paginaIniziale.appendChild(listaIstruzioni);
+  paginaIniziale.appendChild(bottoneInizia);
+
+  bottoneInizia.addEventListener("click", function () {
+    schermataAttiva = "quiz";
+    mostraSchermataGiusta("domande");
+    caricaProssimaDomanda();
+  });
+}
+
+
+
+/*function mostraBenvenuto() {
   const paginaIniziale = document.querySelector("#paginaIniziale");
 
   paginaIniziale.innerHTML = `
@@ -279,7 +328,7 @@ function mostraBenvenuto() {
     mostraSchermataGiusta("domande");
     caricaProssimaDomanda();
   });
-}
+}*/
 
 mostraBenvenuto();
 
@@ -320,7 +369,7 @@ function caricaProssimaDomanda() { //NICHOLAS
     //controllo fine array
     schermataFinale();
     mostraSchermataGiusta('paginaFinale');
-    
+
   }
 }
 
@@ -337,13 +386,13 @@ function avviaTimer(durataInSecondi, onTempoScaduto) {  //secondo parametro = fu
     console.log(`Tempo restante: ${tempoRestante}s`);
 
     const elementoTimer = document.querySelector('.tempoRimasto');  // assegnare classe al timer o aggiornare se ggia ha una classe
-    if(elementoTimer){
+    if (elementoTimer) {
       elementoTimer.textContent = `${tempoRestante}s`
     }
-    if(tempoRestante <= 5) {
+    if (tempoRestante <= 5) {
       elementoTimer.classList.add('tempoRosso')  //cambiare con classe creata in css per il timer quasi scaduto
     }
-    
+
     if (tempoRestante <= 0) {  //
       fermaTimer();
 
@@ -506,82 +555,82 @@ function renderQuiz() {
 // sezioneDomande.appendChild(contatore);
 //Giuseppe function schermataFinale();
 function schermataFinale() {
-const paginaFinale = document.querySelector ('#paginaFinale')
+  const paginaFinale = document.querySelector('#paginaFinale')
 
-const totaleDomande = 10;
-const risposteCorrette = punteggio;
-const risposteSbagliate = totaleDomande - risposteCorrette;
-const percentuale = (risposteCorrette / totaleDomande) * 100;
+  const totaleDomande = 10;
+  const risposteCorrette = punteggio;
+  const risposteSbagliate = totaleDomande - risposteCorrette;
+  const percentuale = (risposteCorrette / totaleDomande) * 100;
 
-const titoloFinale = document.createElement('h2');
-titoloFinale.textContent = 'Risultati'
-titoloFinale.classList.add('titoloFinale');
+  const titoloFinale = document.createElement('h2');
+  titoloFinale.textContent = 'Risultati'
+  titoloFinale.classList.add('titoloFinale');
 
-const sottotitoloFinale = document.createElement('p');
-sottotitoloFinale.textContent = 'Hai completato il quiz.'
-sottotitoloFinale.classList.add('sottotitoloFinale');
-
-
-const risultatoPercentuale = document.createElement('p');
-risultatoPercentuale.classList.add('percentualeFinale');
-risultatoPercentuale.textContent = `${percentuale}%`
+  const sottotitoloFinale = document.createElement('p');
+  sottotitoloFinale.textContent = 'Hai completato il quiz.'
+  sottotitoloFinale.classList.add('sottotitoloFinale');
 
 
-const esitoFinale = document.createElement('p');
-esitoFinale.classList.add('esitoFinale');
-if ( punteggio >= 6 ) {
-  esitoFinale.textContent = 'Promosso 🥳'
-  esitoFinale.classList.add('esitoPromosso');
-} if(punteggio < 6) {
-  esitoFinale.textContent = 'Bocciato 😩'
-  esitoFinale.classList.add('esitoBocciato');
-}
+  const risultatoPercentuale = document.createElement('p');
+  risultatoPercentuale.classList.add('percentualeFinale');
+  risultatoPercentuale.textContent = `${percentuale}%`
 
 
-const contenitoreCorrette = document.createElement('div');
-
-const percentualeCorrette = document.createElement('span');
-percentualeCorrette.textContent = 'Corrette'
-
-const barraCorrette = document.createElement('div');
-const barraInternaCorrette = document.createElement('div');
-barraCorrette.classList.add('tracciaBarra');
-barraInternaCorrette.classList.add('barraCorrette');
-barraInternaCorrette.style.width = `${percentuale}%`
-
-const risultatoDomandeCorrette = document.createElement('span');
-risultatoDomandeCorrette.textContent = `${risposteCorrette} / 10`
-
-const contenitoreSbagliate = document.createElement('div');
-
-const percentualeSbagliate = document.createElement('span');
-percentualeSbagliate.textContent = 'Sbagliate'
-
-const barraSbagliate = document.createElement('div');
-const barraInternaSbagliate = document.createElement('div');
-barraSbagliate.classList.add('tracciaBarra');
-barraInternaSbagliate.classList.add('barraSbagliate');
-barraInternaSbagliate.style.width = `${100 - percentuale}%`
-
-const risultatoDomandeSbagliate = document.createElement('span');
-risultatoDomandeSbagliate.textContent = `${risposteSbagliate} / 10`
-
-barraCorrette.appendChild(barraInternaCorrette);
-contenitoreCorrette.appendChild(percentualeCorrette);
-contenitoreCorrette.appendChild(barraCorrette);
-contenitoreCorrette.appendChild(risultatoDomandeCorrette);
+  const esitoFinale = document.createElement('p');
+  esitoFinale.classList.add('esitoFinale');
+  if (punteggio >= 6) {
+    esitoFinale.textContent = 'Promosso 🥳'
+    esitoFinale.classList.add('esitoPromosso');
+  } if (punteggio < 6) {
+    esitoFinale.textContent = 'Bocciato 😩'
+    esitoFinale.classList.add('esitoBocciato');
+  }
 
 
-barraSbagliate.appendChild(barraInternaSbagliate);
-contenitoreSbagliate.appendChild(percentualeSbagliate);
-contenitoreSbagliate.appendChild(barraSbagliate);
-contenitoreSbagliate.appendChild(risultatoDomandeSbagliate);
+  const contenitoreCorrette = document.createElement('div');
 
-paginaFinale.appendChild(titoloFinale);
-paginaFinale.appendChild(sottotitoloFinale);
+  const percentualeCorrette = document.createElement('span');
+  percentualeCorrette.textContent = 'Corrette'
 
-paginaFinale.appendChild(risultatoPercentuale);
-paginaFinale.appendChild(esitoFinale);
-paginaFinale.appendChild(contenitoreCorrette);
-paginaFinale.appendChild(contenitoreSbagliate);
+  const barraCorrette = document.createElement('div');
+  const barraInternaCorrette = document.createElement('div');
+  barraCorrette.classList.add('tracciaBarra');
+  barraInternaCorrette.classList.add('barraCorrette');
+  barraInternaCorrette.style.width = `${percentuale}%`
+
+  const risultatoDomandeCorrette = document.createElement('span');
+  risultatoDomandeCorrette.textContent = `${risposteCorrette} / 10`
+
+  const contenitoreSbagliate = document.createElement('div');
+
+  const percentualeSbagliate = document.createElement('span');
+  percentualeSbagliate.textContent = 'Sbagliate'
+
+  const barraSbagliate = document.createElement('div');
+  const barraInternaSbagliate = document.createElement('div');
+  barraSbagliate.classList.add('tracciaBarra');
+  barraInternaSbagliate.classList.add('barraSbagliate');
+  barraInternaSbagliate.style.width = `${100 - percentuale}%`
+
+  const risultatoDomandeSbagliate = document.createElement('span');
+  risultatoDomandeSbagliate.textContent = `${risposteSbagliate} / 10`
+
+  barraCorrette.appendChild(barraInternaCorrette);
+  contenitoreCorrette.appendChild(percentualeCorrette);
+  contenitoreCorrette.appendChild(barraCorrette);
+  contenitoreCorrette.appendChild(risultatoDomandeCorrette);
+
+
+  barraSbagliate.appendChild(barraInternaSbagliate);
+  contenitoreSbagliate.appendChild(percentualeSbagliate);
+  contenitoreSbagliate.appendChild(barraSbagliate);
+  contenitoreSbagliate.appendChild(risultatoDomandeSbagliate);
+
+  paginaFinale.appendChild(titoloFinale);
+  paginaFinale.appendChild(sottotitoloFinale);
+
+  paginaFinale.appendChild(risultatoPercentuale);
+  paginaFinale.appendChild(esitoFinale);
+  paginaFinale.appendChild(contenitoreCorrette);
+  paginaFinale.appendChild(contenitoreSbagliate);
 }

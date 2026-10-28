@@ -502,3 +502,51 @@ function renderQuiz() {
 //     contatore.textContent = `Domanda ${indiceDomanda + 1} di ${quizDomande.length}`;
 // }
 // sezioneDomande.appendChild(contatore);
+
+
+
+/*
+  [ALESSANDRO]
+  Schermata finale del quiz e pulsante Ricomincia.
+  */
+
+function creaPaginaFinale() {
+  const paginaFinale = document.querySelector("#paginaFinale");
+
+  paginaFinale.innerHTML = `
+    <h2 class="titoloFinale">Risultati</h2>
+    <p class="sottotitoloFinale">Hai completato il quiz.</p>
+    <p class="percentualeFinale">0%</p>
+    <p class="esitoFinale">Esito</p>
+
+    <div class="barreFinali">
+      <div class="rigaBarra">
+        <span class="etichettaBarra">Corrette</span>
+        <div class="tracciaBarra">
+          <div class="riempimentoBarra barraCorrette"></div>
+        </div>
+        <span class="conteggioBarra">0/10</span>
+      </div>
+
+      <div class="rigaBarra">
+        <span class="etichettaBarra">Sbagliate</span>
+        <div class="tracciaBarra">
+          <div class="riempimentoBarra barraSbagliate"></div>
+        </div>
+        <span class="conteggioBarra">0/10</span>
+      </div>
+    </div>
+
+    <button id="ricominciaQuiz" class="pulsantePrimario">Ricomincia</button>
+  `;
+
+  document.querySelector("#ricominciaQuiz").addEventListener("click", function () {
+    fermaTimer();
+    indiceDomanda = 0;
+    punteggio = 0;
+    schermataAttiva = "welcome";
+    mostraSchermataGiusta("paginaIniziale");
+  });
+}
+
+creaPaginaFinale();

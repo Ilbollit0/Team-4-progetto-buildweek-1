@@ -91,8 +91,11 @@ body {
 }
 
 
-  .ultimiSecondi {color: #d32f2f;
-  }
+/* [Gabriel] timer della domanda: numero rosso negli ultimi 5 secondi.
+   La classe "tempoRosso" la aggiunge avviaTimer() di Nicholas */
+.tempoRimasto.tempoRosso {
+  color: #d32f2f;
+}
 
 /* [Luca] Pagina iniziale e pagina finale.
    Le <section> #paginaIniziale e #paginaFinale sono già in index.html: il JS genera solo

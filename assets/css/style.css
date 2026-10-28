@@ -244,10 +244,14 @@ body {
 
 .barraCorrette {
   background-color: #2a7d57;
+  width: 70%;
+  height: 100%;
 }
 
 .barraSbagliate {
   background-color: #cf453c;
+   width: 30%;
+  height: 100%;
 }
 
 .conteggioBarra {

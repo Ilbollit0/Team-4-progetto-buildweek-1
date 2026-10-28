@@ -547,9 +547,10 @@ const barraCorrette = document.createElement('div');
 const barraInternaCorrette = document.createElement('div');
 barraCorrette.classList.add('tracciaBarra');
 barraInternaCorrette.classList.add('barraCorrette');
+barraInternaCorrette.style.width = `${percentuale}%`
 
 const risultatoDomandeCorrette = document.createElement('span');
-risultatoDomandeCorrette.textContent = `${punteggio} / 10`
+risultatoDomandeCorrette.textContent = `${risposteCorrette} / 10`
 
 const contenitoreSbagliate = document.createElement('div');
 
@@ -560,6 +561,7 @@ const barraSbagliate = document.createElement('div');
 const barraInternaSbagliate = document.createElement('div');
 barraSbagliate.classList.add('tracciaBarra');
 barraInternaSbagliate.classList.add('barraSbagliate');
+barraInternaSbagliate.style.width = `${100 - percentuale}%`
 
 const risultatoDomandeSbagliate = document.createElement('span');
 risultatoDomandeSbagliate.textContent = `${risposteSbagliate} / 10`

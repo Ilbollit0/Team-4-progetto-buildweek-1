@@ -4,7 +4,7 @@
   padding: 0;
 }
 
-main{
+main {
   max-width: 992px;
 }
 
@@ -43,7 +43,7 @@ body {
 .timerRotondo {
   position: relative; /* i secondi si posizionano sopra il cerchio */
   display: inline-block;
-  width: 64px;  /* misura del timer: si cambia solo qui (e nel line-height sotto) */
+  width: 64px; /* misura del timer: si cambia solo qui (e nel line-height sotto) */
   height: 64px;
 }
 
@@ -89,7 +89,6 @@ body {
 .timerRotondo.ultimiSecondi .cerchioAvanzamento {
   stroke: #d32f2f;
 }
-
 
 /* [Gabriel] timer della domanda: numero rosso negli ultimi 5 secondi.
    La classe "tempoRosso" la aggiunge avviaTimer() di Nicholas */
@@ -267,10 +266,9 @@ body {
   display: none;
 }
 
-
 /*[Manuel]* contatore, domanda, risposte, classi corretta/sbagliata */
 .intestazioneQuiz {
-  overflow: hidden;              /* contiene i float */
+  overflow: hidden; /* contiene i float */
   margin-bottom: 24px;
 }
 
@@ -306,7 +304,7 @@ body {
 
 .rispostaQuiz {
   display: block;
-  overflow: hidden;              /* contiene il float della lettera */
+  overflow: hidden; /* contiene il float della lettera */
   width: 100%;
   margin-bottom: 12px;
   padding: 14px 16px;
@@ -333,7 +331,7 @@ body {
 
 .testoRisposta {
   display: block;
-  margin-left: 46px;             /* 32px lettera + 14px spazio */
+  margin-left: 46px; /* 32px lettera + 14px spazio */
   line-height: 32px;
 }
 

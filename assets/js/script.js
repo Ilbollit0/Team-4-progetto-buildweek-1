@@ -230,9 +230,9 @@ function mostraSchermataGiusta(idSchermata) {  //FUNZIONE PER CAMBIARE SCHERMATA
 function mostraBenvenuto() {
 
   //creazione h1 della pagina
-  const titoloInziale = document.createElement('h1');
-  titoloInziale.classList.add('titoloInziale');
-  titoloInziale.textContent = 'Benvenuto al Quiz! 🤗';
+  const titoloIniziale = document.createElement('h1');
+  titoloIniziale.classList.add('titoloIniziale');
+  titoloIniziale.textContent = 'Benvenuto al Quiz! 🤗';
 
   //p di presentazione
   const introIniziale = document.createElement('p');
@@ -282,29 +282,6 @@ function mostraBenvenuto() {
 
 
 
-/*function mostraBenvenuto() {
-  const paginaIniziale = document.querySelector("#paginaIniziale");
-
-  paginaIniziale.innerHTML = `
-    <h1>Benvenuto al Quiz!</h1>
-
-    <p>
-      Metti alla prova le tue conoscenze di HTML, CSS e JavaScript.
-    </p>
-
-    <button id="iniziaQuiz">
-      Inizia Quiz
-    </button>
-  `;
-
-  const bottoneInizia = document.querySelector("#iniziaQuiz");
-
-  bottoneInizia.addEventListener("click", function () {
-    schermataAttiva = "quiz";
-    mostraSchermataGiusta("domande");
-    caricaProssimaDomanda();
-  });
-}*/
 
 mostraBenvenuto();
 
@@ -522,22 +499,16 @@ function renderQuiz() {
   });
   sezioneDomande.replaceChildren(contenitore);
 }
-//contatore domande: Giuseppe
-// const sezioneDomande = document.querySelector('#domande');
-// const contatore = document.createElement('p');
-// function aggiornaContatore() {
-//     contatore.textContent = `Domanda ${indiceDomanda + 1} di ${quizDomande.length}`;
-// }
-// sezioneDomande.appendChild(contatore);
-//Giuseppe function schermataFinale();
+
+//Giuseppe (revisione team) function schermataFinale();
 function schermataFinale() {
   const paginaFinale = document.querySelector('#paginaFinale')
-
+// assegnazione costanti
   const totaleDomande = 10;
   const risposteCorrette = punteggio;
-  const risposteSbagliate = totaleDomande - risposteCorrette;
-  const percentuale = (risposteCorrette / totaleDomande) * 100;
-
+  const risposteSbagliate = totaleDomande - risposteCorrette;// calcolo risposte sbagliate
+  const percentuale = (risposteCorrette / totaleDomande) * 100;// calcolo percentuale
+//creazione elementi con assegnazioni classi
   const titoloFinale = document.createElement('h2');
   titoloFinale.textContent = 'Risultati'
   titoloFinale.classList.add('titoloFinale');
@@ -551,7 +522,7 @@ function schermataFinale() {
   risultatoPercentuale.classList.add('percentualeFinale');
   risultatoPercentuale.textContent = `${percentuale}%`
 
-
+// controllo esisto quiz
 const esitoFinale = document.createElement('p');
 esitoFinale.classList.add('esitoFinale');
 if ( punteggio >= 6 ) {
@@ -562,15 +533,16 @@ if ( punteggio >= 6 ) {
   esitoFinale.classList.add('esitoBocciato');
 }
 
-
+//creazione costante per pagina finale
 const contenitoreCorrette = document.createElement('div');
 
 const percentualeCorrette = document.createElement('span');
 percentualeCorrette.textContent = 'Corrette'
 
 const barraCorrette = document.createElement('div');
-const barraInternaCorrette = document.createElement('div');
 barraCorrette.classList.add('tracciaBarra');
+
+const barraInternaCorrette = document.createElement('div');
 barraInternaCorrette.classList.add('barraCorrette');
 barraInternaCorrette.style.width = `${percentuale}%`
 

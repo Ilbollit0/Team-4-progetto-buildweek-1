@@ -26,6 +26,7 @@ const quizDomande = [
     opzioni: ["<h6>", "<header>", "<h1>", "<head>"],
     rispostaCorretta: "<h1>",
     tempo: 20,
+    soluzione: 'si usa perchè è bello'
   },
   {
     id: 2,
@@ -35,6 +36,8 @@ const quizDomande = [
     opzioni: ["alt", "src", "title", "href"],
     rispostaCorretta: "alt",
     tempo: 20,
+    soluzione: 'si usa perchè è bello'
+
   },
   {
     id: 3,
@@ -44,6 +47,8 @@ const quizDomande = [
     opzioni: ["<ol>", "<li>", "<dl>", "<ul>"],
     rispostaCorretta: "<ul>",
     tempo: 20,
+    soluzione: 'si usa perchè è bello'
+
   },
   {
     id: 4,
@@ -58,6 +63,8 @@ const quizDomande = [
     ],
     rispostaCorretta: "Che il documento è scritto in HTML5",
     tempo: 20,
+    soluzione: 'si usa perchè è bello'
+
   },
   {
     id: 5,
@@ -67,6 +74,8 @@ const quizDomande = [
     opzioni: ["mandatory", "validate", "required", "needed"],
     rispostaCorretta: "required",
     tempo: 20,
+    soluzione: 'si usa perchè è bello'
+
   },
   {
     id: 6,
@@ -76,6 +85,8 @@ const quizDomande = [
     opzioni: ["<main>", "<section>", "<article>", "<div>"],
     rispostaCorretta: "<main>",
     tempo: 20,
+    soluzione: 'si usa perchè è bello'
+
   },
   {
     id: 7,
@@ -85,6 +96,8 @@ const quizDomande = [
     opzioni: ["margin", "border-spacing", "gap", "padding"],
     rispostaCorretta: "padding",
     tempo: 20,
+    soluzione: 'si usa perchè è bello'
+
   },
   {
     id: 8,
@@ -94,6 +107,8 @@ const quizDomande = [
     opzioni: ["block", "flex", "inline", "float"],
     rispostaCorretta: "flex",
     tempo: 20,
+    soluzione: 'si usa perchè è bello'
+
   },
   {
     id: 9,
@@ -111,6 +126,8 @@ const quizDomande = [
     opzioni: ["border-radius", "corner-style", "round-corner", "box-round"],
     rispostaCorretta: "border-radius",
     tempo: 20,
+    soluzione: 'si usa perchè è bello'
+
   },
   {
     id: 11,
@@ -120,6 +137,8 @@ const quizDomande = [
     opzioni: [":active", ":focus", ":visited", ":hover"],
     rispostaCorretta: ":hover",
     tempo: 20,
+    soluzione: 'si usa perchè è bello'
+
   },
   {
     id: 12,
@@ -134,6 +153,8 @@ const quizDomande = [
     rispostaCorretta:
       "Include padding e bordo nella larghezza e nell'altezza dichiarate",
     tempo: 20,
+    soluzione: 'si usa perchè è bello'
+
   },
   {
     id: 13,
@@ -219,11 +240,13 @@ const quizDomande = [
     tempo: 20,
   },
 ];
-
+//array in cui pushare risposte cliccate
+let arrayRisposte = [];
 /* Costanti del quiz */
 const ritardoFeedback = 1500; // ms di attesa dopo risposta prima di avanzare
 const sezioneDomande = document.querySelector("#domande");
 const paginaIniziale = document.querySelector("#paginaIniziale");
+const paginaFinale = document.querySelector("#paginaFinale");
 
 /* Stato globale */
 let indiceDomanda = 0; //usato per caricaProssimaDomanda
@@ -407,6 +430,12 @@ function gestisciTempoScaduto() {
   let domanda = domandeMischiate[indiceDomanda];
   const tuttiIBottoni = document.querySelectorAll(".rispostaQuiz"); //selezioniamo tutti i btn creati in renderQuiz()
 
+  arrayRisposte.push({
+    domandaFatta: domanda.domanda,
+    rispostaUtente: 'Non hai risposto nel tempo dato',
+    rispostaCorretta: domanda.rispostaCorretta,
+    soluzione: domanda.soluzione
+  });
   tuttiIBottoni.forEach((btn) => {
     btn.disabled = true; // disattiva i btn
     //verifichiamo la risposta giusta e gli diamo la classe corretta per illuminarla allo scadere
@@ -429,10 +458,20 @@ function gestisciRisposta(bottone, rispostaCliccata) {
 
   let domanda = domandeMischiate[indiceDomanda];
 
+  //[Tutti insieme] push per mettere domanda dell'array mescolato, la risposta cliccata, la rispostaCorretta e la soluzione 
+  //in un nuovo array da visualizzare nella pagina finale.
+  arrayRisposte.push({
+    domandaFatta: domanda.domanda,
+    rispostaUtente: rispostaCliccata,
+    rispostaCorretta: domanda.rispostaCorretta,
+    soluzione: domanda.soluzione
+  });
+
+  console.log(arrayRisposte);
+
   tuttiIBottoni.forEach((btn) => {
     btn.disabled = true; //blocca tutti i click seguenti
   });
-
   if (rispostaCliccata === domanda.rispostaCorretta) {
     bottone.classList.add("corretta");
     punteggio++;
@@ -448,6 +487,7 @@ function gestisciRisposta(bottone, rispostaCliccata) {
     indiceDomanda++;
     caricaProssimaDomanda();
   }, ritardoFeedback);
+
 }
 
 function renderQuiz() {
@@ -532,7 +572,9 @@ function renderQuiz() {
     listaRisposte.appendChild(bottone);
 
     bottone.addEventListener("click", () => {
+
       gestisciRisposta(bottone, risposta);
+
     });
   });
   sezioneDomande.replaceChildren(contenitore);
@@ -540,7 +582,6 @@ function renderQuiz() {
 
 //Giuseppe (revisione team) function schermataFinale();
 function schermataFinale() {
-  const paginaFinale = document.querySelector("#paginaFinale");
   // assegnazione costanti
   const totaleDomande = 10;
   const risposteCorrette = punteggio;
@@ -615,6 +656,24 @@ function schermataFinale() {
   bottoneRicomincia.textContent = "Ricomincia";
   bottoneRicomincia.classList.add("pulsantePrimario");
 
+  const bottoneRisposte = document.createElement('button');
+  bottoneRisposte.classList.add('bottoneRisposte')
+  bottoneRisposte.textContent = `Riepilogo risposte.`
+
+  let riepilogoVisibile = false; // stato
+
+  bottoneRisposte.addEventListener("click", () => {
+    riepilogoVisibile = !riepilogoVisibile; // il ! inverte: true diventa false e viceversa
+
+    if (riepilogoVisibile) {
+      mostraRisultati.classList.remove('nascosto')
+      bottoneRisposte.textContent = "Nascondi riepilogo";
+    } else {
+      mostraRisultati.classList.add('nascosto')
+      bottoneRisposte.textContent = "Mostra riepilogo";
+    }
+  });
+
   barraCorrette.appendChild(barraInternaCorrette);
   contenitoreCorrette.appendChild(percentualeCorrette);
   contenitoreCorrette.appendChild(barraCorrette);
@@ -630,14 +689,61 @@ function schermataFinale() {
 
   paginaFinale.appendChild(titoloFinale);
   paginaFinale.appendChild(sottotitoloFinale);
-
   paginaFinale.appendChild(risultatoPercentuale);
   paginaFinale.appendChild(esitoFinale);
   paginaFinale.appendChild(barreFinali);
 
   paginaFinale.appendChild(bottoneRicomincia);
+  paginaFinale.appendChild(bottoneRisposte);
+
   //Bottone dinamico che reindirizza a index.html
   bottoneRicomincia.addEventListener("click", function () {
     window.location.href = "index.html";
   });
+
 }
+
+
+function mostraRisultati() {
+  const contenitoreArray = document.createElement('div');
+  contenitoreArray.classList.add('contenitoreArray');
+
+  const risposteDate = document.createElement('h3');
+  risposteDate.classList.add('risposteDate');
+  risposteDate.textContent = 'Ecco il riepilogo delle tue domande con le relative risposte!';
+
+
+  const listaRiepilogativa = document.createElement('ol');
+  listaRiepilogativa.classList.add('listaRiepilogativa');
+
+
+  arrayRisposte.forEach((unita) => {
+    const liInterno = document.createElement('li');
+    liInterno.classList.add('liInterno');
+
+    const testoDomanda = document.createElement('p');
+    testoDomanda.classList.add('testoDomanda');
+    testoDomanda.textContent = `${unita.domandaFatta}`;
+
+    const rispostaData = document.createElement('p');
+    rispostaData.classList.add('rispostaData');
+    rispostaData.textContent = `La tua risposta è: ${unita.rispostaUtente}`;
+
+    const soluzioneCorretta = document.createElement('p');
+    soluzioneCorretta.classList.add('soluzioneCorretta');
+    soluzioneCorretta.textContent = `La soluzione è: ${unita.soluzione}`;
+
+    liInterno.appendChild(testoDomanda);
+    liInterno.appendChild(rispostaData);
+    liInterno.appendChild(soluzioneCorretta);
+
+    listaRiepilogativa.appendChild(liInterno);
+
+    contenitoreArray.appendChild(risposteDate);
+    contenitoreArray.appendChild(listaRiepilogativa);
+  });
+
+
+  paginaFinale.appendChild(contenitoreArray);
+}
+

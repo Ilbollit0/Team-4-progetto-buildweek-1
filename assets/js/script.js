@@ -267,7 +267,7 @@ function mostraBenvenuto() {
   listaIstruzioni.appendChild(punto3);
   
   //appendiamo tutto alla paginaIniziale
-  paginaIniziale.appendChild(titoloInziale);
+  paginaIniziale.appendChild(titoloIniziale);
   paginaIniziale.appendChild(introIniziale);
   paginaIniziale.appendChild(listaIstruzioni);
   paginaIniziale.appendChild(bottoneInizia);

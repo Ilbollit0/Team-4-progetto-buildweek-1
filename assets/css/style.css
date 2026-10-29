@@ -42,7 +42,8 @@ body {
 /* [Gabriel] TIMER ROTONDO: anello che si accorcia ogni secondo, rosso da 5 a 0 */
 .timerRotondo {
   position: relative; /* i secondi si posizionano sopra il cerchio */
-  display: inline-block;
+  display: inline;
+  float: right;
   width: 64px; /* misura del timer: si cambia solo qui (e nel line-height sotto) */
   height: 64px;
 }

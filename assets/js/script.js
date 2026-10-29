@@ -452,26 +452,64 @@ function renderQuiz() {
 
   //Creazione degli elementi html per la visualizzazione
   const contenitore = document.createElement("div"); //contenitore che contiene tutta la visualizzazione della domanda
+contenitore.classList.add("quiz");
+  
   const intestazione = document.createElement("div"); //Raggruppa contatore e timer
+intestazione.classList.add("intestazioneQuiz");
+
   const categoria = document.createElement("p"); // serve per mostrare la categoria della domanda corrente (facoltativo)
-  const contatore = document.createElement("p"); //mostra il numero della domanda corrente esempio 3 di 5
-  const timer = document.createElement("p"); // per il tempo rimanente alla risposta
-  const domanda = document.createElement("h2"); // Domanda
-  const listaRisposte = document.createElement("div"); //possibili risposte
-
-  /*[Manuel]*/
-  contenitore.classList.add("quiz");
-  intestazione.classList.add("intestazioneQuiz");
-  contatore.classList.add("contatoreQuiz");
-  timer.classList.add("tempoRimasto", "cerchioSfondo"); // già stilizzata da Gabriel in CSS
   categoria.classList.add("categoriaQuiz");
-  domanda.classList.add("domandaQuiz");
-  listaRisposte.classList.add("listaRisposte");
-
-  // recupero la categoria della domanda corrente e la scrivo nell'elemento categoria creato in precedenza
+// recupero la categoria della domanda corrente e la scrivo nell'elemento categoria creato in precedenza
   categoria.textContent = domandaCorrente.categoria;
-  //aggiorno il contatore
+
+  const contatore = document.createElement("p"); //mostra il numero della domanda corrente esempio 3 di 5
+  contatore.classList.add("contatoreQuiz");
+//aggiorno il contatore
   contatore.textContent = `DOMANDA ${indiceDomanda + 1} DI 10`;
+
+  const timer = document.createElement('p')
+  timer.classList.add("tempoRimasto", "cerchioSfondo"); // già stilizzata da Gabriel in CSS
+
+
+  const containerTimer = document.createElement("div"); // per il tempo rimanente alla risposta
+  // containerTimer.classList.add('')
+
+const fettaDestra = document.createElement('div'); 
+//aggiungi classi css
+
+const latoDestro = document.createElement('div');
+//aggiungiamo classe css
+fettaDestra.appendChild(latoDestro);
+
+const fettaSinistra = document.createElement('div')
+//aggiungi classi css
+const latoSinistro = document.createElement('div');
+//aggiungiamo classe css
+fettaSinistra.appendChild(latoSinistro);
+
+const cerchioCentrale = document.createElement('div');
+
+containerTimer.appendChild(fettaDestra);
+containerTimer.appendChild(fettaSinistra);
+containerTimer.appendChild(cerchioCentrale)
+cerchioCentrale.appendChild(timer);
+/*[Manuel]*/
+  const domanda = document.createElement("h2"); // Domanda
+domanda.classList.add("domandaQuiz");
+
+const listaRisposte = document.createElement("div"); //possibili risposte
+listaRisposte.classList.add("listaRisposte");
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
 
   //visualizzazione del tempo
   timer.textContent = `${domandaCorrente.tempo}s`;
@@ -479,10 +517,10 @@ function renderQuiz() {
   //visualizzazione del testo della domanda
   domanda.textContent = domandaCorrente.domanda;
   //raggruppo gli elementi nell'intestazione <div>
-  intestazione.append(contatore, timer);
+  intestazione.append(contatore);
 
   //raggruppo tutto nel contenitore principale <section>
-  contenitore.append(intestazione, categoria, domanda, listaRisposte);
+  contenitore.append(intestazione, containerTimer, categoria, domanda, listaRisposte);
 
   //utilizzo foreach per eseguire la funzione una volta per ogni elemento "opzioni" dell'array opzioni
   //risposta = stringa

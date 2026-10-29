@@ -39,6 +39,7 @@ body {
 /* Cerchio esterno: il colore (verde) si vede qui e il JS lo cancella piano piano */
 .timerRotondo {
   position: relative;
+  float: right;
   width: 70px;
   height: 70px;
   margin: 0 auto 24px; /* centrato */
@@ -69,6 +70,12 @@ body {
 
 .tempoRimasto.tempoGiallo {
   color: #b38f00;
+}
+
+.containerTimer{
+  overflow: hidden;
+  display: inline-block;
+  float: right;
 }
 
 /* [Gabriel] timer della domanda: numero rosso negli ultimi 5 secondi.

@@ -494,10 +494,14 @@ function renderQuiz() {
   //visualizzazione del testo della domanda
   domanda.textContent = domandaCorrente.domanda;
   //raggruppo gli elementi nell'intestazione <div>
-  intestazione.append(contatore);
+  intestazione.appendChild(contatore);
 
   //raggruppo tutto nel contenitore principale <div>
-  contenitore.append(intestazione, containerTimer, categoria, domanda, listaRisposte);
+  contenitore.appendChild(containerTimer);
+  contenitore.appendChild(intestazione);
+  contenitore.appendChild(categoria);
+  contenitore.appendChild(domanda);
+  contenitore.appendChild(listaRisposte);
 
   //utilizzo foreach per eseguire la funzione una volta per ogni elemento "opzioni" dell'array opzioni
   //risposta = stringa

@@ -347,53 +347,62 @@ function caricaProssimaDomanda() {
   }
 }
 
-//NICHOLAS                                             // primo parametro = quanti secondi sono passati
+//NICHOLAS
+// primo parametro = quanti secondi sono passati
 function avviaTimer(durataInSecondi, onTempoScaduto) {
-  //secondo parametro = funzione da richiamare allo scadere del tempo overo caricaProssimaDomanda
   fermaTimer();
   tempoRestante = durataInSecondi;
-  console.log(`Timer avviato: ${tempoRestante} secondi`);
 
   timerIntervallo = setInterval(() => {
-    //ripete il codice ogni millisecondo indicato a fine funzione ogni 1000ms viene ripetuta la funzione nel blocco
     tempoRestante--;
-    console.log(`Tempo restante: ${tempoRestante}s`);
 
-    const elementoTimer = document.querySelector(".tempoRimasto"); // assegnare classe al timer o aggiornare se ggia ha una classe
-    if (elementoTimer) {
+    //selezioniamo il numero e il cerchio (cerchioTimer nasce QUI)
+    const elementoTimer = document.querySelector(".tempoRimasto");
+    const cerchioTimer = document.querySelector(".timerRotondo");
+
+    if (elementoTimer && cerchioTimer) {
+      // aggiorniamo il testo
       elementoTimer.textContent = `${tempoRestante}s`;
-    }
-    if (tempoRestante <= 10) {
-      elementoTimer.classList.add("tempoGiallo"); //cambiare con classe creata in css per il timer quasi scaduto
-    }
-    if (tempoRestante <= 5) {
-      elementoTimer.classList.remove("tempoGiallo");
-      elementoTimer.classList.add("tempoRosso"); //cambiare con classe creata in css per il timer quasi scaduto
+
+      // scegliamo il colore in base al tempo che resta
+      let colore = "#2a7d57";
+      if (tempoRestante <= 10) {
+        colore = "#ecc115";
+        elementoTimer.classList.add("tempoGiallo");
+      }
+      if (tempoRestante <= 5) {
+        colore = "#d32f2f";
+        elementoTimer.classList.remove("tempoGiallo");
+        elementoTimer.classList.add("tempoRosso");
+      }
+
+      //il colore cambia in base al tempo che scorre
+      const percentualeGrigia = 100 - (tempoRestante / durataInSecondi) * 100;
+      cerchioTimer.style.background = `conic-gradient(#e2e4ec ${percentualeGrigia}%, ${colore} 0)`;
     }
 
+    //controllo fine tempo
     if (tempoRestante <= 0) {
-      //
       fermaTimer();
-
       if (typeof onTempoScaduto === "function") {
-        onTempoScaduto(); //richiamiamo funzione anonima per incremento e passare alla prossima domanda richiama caricaProssimaDomanda allo scadere del timer
+        onTempoScaduto();
       }
     }
   }, 1000);
 }
 
+//NICHOLAS
 // Funzione per fermare/azzerare il timer
 function fermaTimer() {
-  //NICHOLAS
   if (timerIntervallo) {
     clearInterval(timerIntervallo); //blocca il timer
     timerIntervallo = null; //usiamo null per svuotare la variante
   }
 }
 
+//NICHOLAS
 // illumina risposta esatta allo scadere se nessun btn e stato premuto e passa alla prossima domanda funzione da richiamare in caricaProssimaDomanda
 function gestisciTempoScaduto() {
-  //NICHOLAS
   let domanda = domandeMischiate[indiceDomanda];
   const tuttiIBottoni = document.querySelectorAll(".rispostaQuiz"); //selezioniamo tutti i btn cambiare classe con la classe assegnata da francesco in renderQuiz()
 
@@ -452,64 +461,66 @@ function renderQuiz() {
 
   //Creazione degli elementi html per la visualizzazione
   const contenitore = document.createElement("div"); //contenitore che contiene tutta la visualizzazione della domanda
-contenitore.classList.add("quiz");
-  
+  contenitore.classList.add("quiz");
+
   const intestazione = document.createElement("div"); //Raggruppa contatore e timer
-intestazione.classList.add("intestazioneQuiz");
+  intestazione.classList.add("intestazioneQuiz");
 
   const categoria = document.createElement("p"); // serve per mostrare la categoria della domanda corrente (facoltativo)
   categoria.classList.add("categoriaQuiz");
-// recupero la categoria della domanda corrente e la scrivo nell'elemento categoria creato in precedenza
+  // recupero la categoria della domanda corrente e la scrivo nell'elemento categoria creato in precedenza
   categoria.textContent = domandaCorrente.categoria;
 
   const contatore = document.createElement("p"); //mostra il numero della domanda corrente esempio 3 di 5
   contatore.classList.add("contatoreQuiz");
-//aggiorno il contatore
+  //aggiorno il contatore
   contatore.textContent = `DOMANDA ${indiceDomanda + 1} DI 10`;
 
   const timer = document.createElement('p')
-  timer.classList.add("tempoRimasto", "cerchioSfondo"); // già stilizzata da Gabriel in CSS
+  timer.classList.add("tempoRimasto"); // già stilizzata da Gabriel in CSS
 
 
   const containerTimer = document.createElement("div"); // per il tempo rimanente alla risposta
-  // containerTimer.classList.add('')
+  containerTimer.classList.add("timerRotondo");
 
-const fettaDestra = document.createElement('div'); 
-//aggiungi classi css
 
-const latoDestro = document.createElement('div');
-//aggiungiamo classe css
-fettaDestra.appendChild(latoDestro);
+  const fettaDestra = document.createElement('div');
+  //aggiungi classi css
 
-const fettaSinistra = document.createElement('div')
-//aggiungi classi css
-const latoSinistro = document.createElement('div');
-//aggiungiamo classe css
-fettaSinistra.appendChild(latoSinistro);
+  const latoDestro = document.createElement('div');
+  //aggiungiamo classe css
+  fettaDestra.appendChild(latoDestro);
 
-const cerchioCentrale = document.createElement('div');
+  const fettaSinistra = document.createElement('div')
+  //aggiungi classi css
+  const latoSinistro = document.createElement('div');
+  //aggiungiamo classe css
+  fettaSinistra.appendChild(latoSinistro);
 
-containerTimer.appendChild(fettaDestra);
-containerTimer.appendChild(fettaSinistra);
-containerTimer.appendChild(cerchioCentrale)
-cerchioCentrale.appendChild(timer);
-/*[Manuel]*/
+  const cerchioCentrale = document.createElement('div');
+  cerchioCentrale.classList.add("cerchioCentrale");
+
+  containerTimer.appendChild(fettaDestra);
+  containerTimer.appendChild(fettaSinistra);
+  containerTimer.appendChild(cerchioCentrale)
+  cerchioCentrale.appendChild(timer);
+  /*[Manuel]*/
   const domanda = document.createElement("h2"); // Domanda
-domanda.classList.add("domandaQuiz");
+  domanda.classList.add("domandaQuiz");
 
-const listaRisposte = document.createElement("div"); //possibili risposte
-listaRisposte.classList.add("listaRisposte");
+  const listaRisposte = document.createElement("div"); //possibili risposte
+  listaRisposte.classList.add("listaRisposte");
 
-  
-  
-  
-  
-  
-  
-  
 
-  
-  
+
+
+
+
+
+
+
+
+
 
   //visualizzazione del tempo
   timer.textContent = `${domandaCorrente.tempo}s`;

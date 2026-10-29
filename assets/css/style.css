@@ -63,13 +63,18 @@ body {
 
 /* [Gabriel] anello grigio di sfondo: resta sempre pieno */
 .cerchioSfondo {
-  stroke: #f1f0f7;
+  border: 3px solid #2a7d57;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  padding-top: 13px;
+  background-color: #fffeff;
+  color: rgb(0, 0, 0);
 }
 
-/* [Gabriel] anello che scende: solo la discesa è morbida, il rosso arriva subito */
-.cerchioAvanzamento {
-  stroke: #6c4bf4;
-  transition: stroke-dashoffset 1s linear;
+.tempoGiallo {
+  border-color: rgb(236, 193, 21);
 }
 
 /* [Gabriel] i secondi al centro del cerchio */
@@ -94,6 +99,7 @@ body {
    La classe "tempoRosso" la aggiunge avviaTimer() di Nicholas */
 .tempoRimasto.tempoRosso {
   color: #d32f2f;
+  border-color: red;
 }
 
 /* [Luca] Pagina iniziale e pagina finale.

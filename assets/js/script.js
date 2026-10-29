@@ -209,23 +209,6 @@ let punteggio = 0;
 let timerIntervallo = null;
 let tempoRestante = 0;
 
-// function mostraBenvenuto() {  };   // chi fa la pagina iniziale (Alessandro)
-// function avviaTimer() { };        // Nicholas
-// function gestisciRisposta()  {}; // Francesco
-
-/* SCRIVI QUI LE TUE FUNZIONI:
-   - render() che chiama renderWelcome / renderQuiz / renderResults in base a currentScreen
-   - renderWelcome() per la schermata iniziale con button Inizia
-   - renderQuiz() per la domanda corrente con i button risposta + counter + timer
-   - renderResults() per la schermata finale con percentuale + barre + verdetto
-   - startTimer() / stopTimer() per il countdown
-   - handleAnswer(button, answer) per il click su una risposta
-   - handleTimeUp() per il tempo scaduto
-   - advance() per andare alla domanda successiva o ai risultati
-*/
-
-
-
 //NICHOLAS
 //creare section con html con id diversi tutte le section devono avere la classe (schermata) la pagina del quiz e la pagina finale devono avere la classe (nascosto)
 //creare classe nascosto in css con display: none;
@@ -546,3 +529,99 @@ function renderQuiz() {
 //     contatore.textContent = `Domanda ${indiceDomanda + 1} di ${quizDomande.length}`;
 // }
 // sezioneDomande.appendChild(contatore);
+//Giuseppe function schermataFinale();
+function schermataFinale() {
+  const paginaFinale = document.querySelector('#paginaFinale')
+
+  const totaleDomande = 10;
+  const risposteCorrette = punteggio;
+  const risposteSbagliate = totaleDomande - risposteCorrette;
+  const percentuale = (risposteCorrette / totaleDomande) * 100;
+
+  const titoloFinale = document.createElement('h2');
+  titoloFinale.textContent = 'Risultati'
+  titoloFinale.classList.add('titoloFinale');
+
+  const sottotitoloFinale = document.createElement('p');
+  sottotitoloFinale.textContent = 'Hai completato il quiz.'
+  sottotitoloFinale.classList.add('sottotitoloFinale');
+
+
+  const risultatoPercentuale = document.createElement('p');
+  risultatoPercentuale.classList.add('percentualeFinale');
+  risultatoPercentuale.textContent = `${percentuale}%`
+
+
+const esitoFinale = document.createElement('p');
+esitoFinale.classList.add('esitoFinale');
+if ( punteggio >= 6 ) {
+  esitoFinale.textContent = 'Promosso 🥳'
+  esitoFinale.classList.add('esitoPromosso');
+} if(punteggio < 6) {
+  esitoFinale.textContent = 'Bocciato 😩'
+  esitoFinale.classList.add('esitoBocciato');
+}
+
+
+const contenitoreCorrette = document.createElement('div');
+
+const percentualeCorrette = document.createElement('span');
+percentualeCorrette.textContent = 'Corrette'
+
+const barraCorrette = document.createElement('div');
+const barraInternaCorrette = document.createElement('div');
+barraCorrette.classList.add('tracciaBarra');
+barraInternaCorrette.classList.add('barraCorrette');
+barraInternaCorrette.style.width = `${percentuale}%`
+
+const risultatoDomandeCorrette = document.createElement('span');
+risultatoDomandeCorrette.textContent = `${risposteCorrette} / 10`
+
+const contenitoreSbagliate = document.createElement('div');
+
+const percentualeSbagliate = document.createElement('span');
+percentualeSbagliate.textContent = 'Sbagliate'
+
+const barraSbagliate = document.createElement('div');
+const barraInternaSbagliate = document.createElement('div');
+barraSbagliate.classList.add('tracciaBarra');
+barraInternaSbagliate.classList.add('barraSbagliate');
+barraInternaSbagliate.style.width = `${100 - percentuale}%`
+
+const risultatoDomandeSbagliate = document.createElement('span');
+risultatoDomandeSbagliate.textContent = `${risposteSbagliate} / 10`
+
+const bottoneRicomincia = document.createElement('button');
+bottoneRicomincia.textContent = 'Ricomincia'
+bottoneRicomincia.classList.add('pulsantePrimario');
+
+
+
+
+barraCorrette.appendChild(barraInternaCorrette);
+contenitoreCorrette.appendChild(percentualeCorrette);
+contenitoreCorrette.appendChild(barraCorrette);
+contenitoreCorrette.appendChild(risultatoDomandeCorrette);
+
+
+barraSbagliate.appendChild(barraInternaSbagliate);
+contenitoreSbagliate.appendChild(percentualeSbagliate);
+contenitoreSbagliate.appendChild(barraSbagliate);
+contenitoreSbagliate.appendChild(risultatoDomandeSbagliate);
+
+paginaFinale.appendChild(titoloFinale);
+paginaFinale.appendChild(sottotitoloFinale);
+
+paginaFinale.appendChild(risultatoPercentuale);
+paginaFinale.appendChild(esitoFinale);
+paginaFinale.appendChild(contenitoreCorrette);
+paginaFinale.appendChild(contenitoreSbagliate);
+
+paginaFinale.appendChild(bottoneRicomincia);
+
+bottoneRicomincia.addEventListener("click", function () {
+  window.location.href = 'index.html'
+  });
+}
+
+// ciao

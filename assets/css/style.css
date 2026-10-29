@@ -54,11 +54,11 @@ body {
   transform: rotate(-90deg);
 }
 
-/* [Gabriel] in SVG il colore della linea si chiama "stroke", lo spessore "stroke-width" */
+/* [Gabriel] in SVG il colore della linea si chiama "stroke", lo spessore "stroke-width", stroke usato come border-radius quindi lo spessore del bordo ovvero 6px */
 .cerchioSfondo,
 .cerchioAvanzamento {
   fill: none;
-  stroke-width: 6;
+  stroke-width: 6px;
 }
 
 /* [Gabriel] anello grigio di sfondo: resta sempre pieno */

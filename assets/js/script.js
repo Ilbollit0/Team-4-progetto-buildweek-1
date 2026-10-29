@@ -538,7 +538,7 @@ const contenitoreCorrette = document.createElement('div');
 
 const percentualeCorrette = document.createElement('span');
 percentualeCorrette.textContent = 'Corrette'
-
+// costante barra per risposte corrette
 const barraCorrette = document.createElement('div');
 barraCorrette.classList.add('tracciaBarra');
 
@@ -553,24 +553,26 @@ const contenitoreSbagliate = document.createElement('div');
 
 const percentualeSbagliate = document.createElement('span');
 percentualeSbagliate.textContent = 'Sbagliate'
-
+// costante barra per risposte sbagliate
 const barraSbagliate = document.createElement('div');
-const barraInternaSbagliate = document.createElement('div');
 barraSbagliate.classList.add('tracciaBarra');
+
+const barraInternaSbagliate = document.createElement('div');
 barraInternaSbagliate.classList.add('barraSbagliate');
 barraInternaSbagliate.style.width = `${100 - percentuale}%`
 
 const risultatoDomandeSbagliate = document.createElement('span');
 risultatoDomandeSbagliate.textContent = `${risposteSbagliate} / 10`
-
+//costante bottone ricomincia 
 const bottoneRicomincia = document.createElement('button');
 bottoneRicomincia.textContent = 'Ricomincia'
 bottoneRicomincia.classList.add('pulsantePrimario');
 
 
 
-
+// inserisce la barra interna  nella barra delle risposte 
 barraCorrette.appendChild(barraInternaCorrette);
+//aggiunge titolo e sottotitolo alla pagina finale
 contenitoreCorrette.appendChild(percentualeCorrette);
 contenitoreCorrette.appendChild(barraCorrette);
 contenitoreCorrette.appendChild(risultatoDomandeCorrette);

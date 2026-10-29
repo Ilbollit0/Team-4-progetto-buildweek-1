@@ -363,7 +363,11 @@ function avviaTimer(durataInSecondi, onTempoScaduto) {
     if (elementoTimer) {
       elementoTimer.textContent = `${tempoRestante}s`;
     }
+    if (tempoRestante <= 10) {
+      elementoTimer.classList.add("tempoGiallo"); //cambiare con classe creata in css per il timer quasi scaduto
+    }
     if (tempoRestante <= 5) {
+      elementoTimer.classList.remove("tempoGiallo");
       elementoTimer.classList.add("tempoRosso"); //cambiare con classe creata in css per il timer quasi scaduto
     }
 
@@ -459,7 +463,7 @@ function renderQuiz() {
   contenitore.classList.add("quiz");
   intestazione.classList.add("intestazioneQuiz");
   contatore.classList.add("contatoreQuiz");
-  timer.classList.add("tempoRimasto"); // già stilizzata da Gabriel in CSS
+  timer.classList.add("tempoRimasto", "cerchioSfondo"); // già stilizzata da Gabriel in CSS
   categoria.classList.add("categoriaQuiz");
   domanda.classList.add("domandaQuiz");
   listaRisposte.classList.add("listaRisposte");
@@ -561,10 +565,10 @@ function schermataFinale() {
 
   const barraInternaCorrette = document.createElement("div");
   barraInternaCorrette.classList.add("barraCorrette");
-  barraInternaCorrette.style.width = `${percentuale}%`;
+  barraInternaCorrette.style.width = `${percentuale}%`; //Percentuale di domande corrette
 
   const risultatoDomandeCorrette = document.createElement("span");
-  risultatoDomandeCorrette.textContent = `${risposteCorrette} / 10`;
+  risultatoDomandeCorrette.textContent = `${risposteCorrette} / 10`; // Numero risposte corrette
 
   const contenitoreSbagliate = document.createElement("div");
 
@@ -575,11 +579,11 @@ function schermataFinale() {
   const barraInternaSbagliate = document.createElement("div");
   barraSbagliate.classList.add("tracciaBarra");
   barraInternaSbagliate.classList.add("barraSbagliate");
-  barraInternaSbagliate.style.width = `${100 - percentuale}%`;
+  barraInternaSbagliate.style.width = `${100 - percentuale}%`; // Calcola la differenza tra larghezza massima dell'elemento (100) meno la % delle risposte corrette
 
   const risultatoDomandeSbagliate = document.createElement("span");
-  risultatoDomandeSbagliate.textContent = `${risposteSbagliate} / 10`;
-
+  risultatoDomandeSbagliate.textContent = `${risposteSbagliate} / 10`; // Numero risposte sbagliate
+  // Creazione bottone, appendChild
   const bottoneRicomincia = document.createElement("button");
   bottoneRicomincia.textContent = "Ricomincia";
   bottoneRicomincia.classList.add("pulsantePrimario");
@@ -603,10 +607,8 @@ function schermataFinale() {
   paginaFinale.appendChild(contenitoreSbagliate);
 
   paginaFinale.appendChild(bottoneRicomincia);
-
+  //Bottone dinamico che reinderizza a index.html
   bottoneRicomincia.addEventListener("click", function () {
     window.location.href = "index.html";
   });
 }
-
-// ciao

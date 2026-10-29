@@ -661,15 +661,16 @@ function schermataFinale() {
   bottoneRisposte.textContent = `Riepilogo risposte.`
 
   let riepilogoVisibile = false; // stato
-
+const schermataRisultati = mostraRisultati();
+schermataRisultati.classList.add('nascosto');
   bottoneRisposte.addEventListener("click", () => {
     riepilogoVisibile = !riepilogoVisibile; // il ! inverte: true diventa false e viceversa
-
+    
     if (riepilogoVisibile) {
-      mostraRisultati.classList.remove('nascosto')
+      schermataRisultati.classList.remove('nascosto');
       bottoneRisposte.textContent = "Nascondi riepilogo";
     } else {
-      mostraRisultati.classList.add('nascosto')
+      schermataRisultati.classList.add('nascosto');
       bottoneRisposte.textContent = "Mostra riepilogo";
     }
   });
@@ -700,7 +701,7 @@ function schermataFinale() {
   bottoneRicomincia.addEventListener("click", function () {
     window.location.href = "index.html";
   });
-
+paginaFinale.appendChild(schermataRisultati);
 }
 
 
@@ -744,6 +745,7 @@ function mostraRisultati() {
   });
 
 
-  paginaFinale.appendChild(contenitoreArray);
+  
+return contenitoreArray;
 }
 

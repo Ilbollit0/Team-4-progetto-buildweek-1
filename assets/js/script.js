@@ -209,23 +209,6 @@ let punteggio = 0;
 let timerIntervallo = null;
 let tempoRestante = 0;
 
-// function mostraBenvenuto() {  };   // chi fa la pagina iniziale (Alessandro)
-// function avviaTimer() { };        // Nicholas
-// function gestisciRisposta()  {}; // Francesco
-
-/* SCRIVI QUI LE TUE FUNZIONI:
-   - render() che chiama renderWelcome / renderQuiz / renderResults in base a currentScreen
-   - renderWelcome() per la schermata iniziale con button Inizia
-   - renderQuiz() per la domanda corrente con i button risposta + counter + timer
-   - renderResults() per la schermata finale con percentuale + barre + verdetto
-   - startTimer() / stopTimer() per il countdown
-   - handleAnswer(button, answer) per il click su una risposta
-   - handleTimeUp() per il tempo scaduto
-   - advance() per andare alla domanda successiva o ai risultati
-*/
-
-
-
 //NICHOLAS
 //creare section con html con id diversi tutte le section devono avere la classe (schermata) la pagina del quiz e la pagina finale devono avere la classe (nascosto)
 //creare classe nascosto in css con display: none;
@@ -640,3 +623,5 @@ bottoneRicomincia.addEventListener("click", function () {
   window.location.href = 'index.html'
   });
 }
+
+// ciao

@@ -44,7 +44,10 @@ body {
   height: 70px;
   margin: 0 auto 24px; /* centrato */
   border-radius: 50%; /* lo rende rotondo */
-  background: conic-gradient(#2a7d57 100%, #e2e4ec 0); /* all'inizio tutto verde */
+  background: conic-gradient(
+    #2a7d57 100%,
+    #e2e4ec 0
+  ); /* all'inizio tutto verde */
 }
 
 /* Cerchio bianco al centro: copre il mezzo e lascia visibile solo l'anello.
@@ -72,10 +75,9 @@ body {
   color: #b38f00;
 }
 
-.containerTimer{
+.containerTimer {
   overflow: hidden;
   display: inline-block;
-  float: right;
 }
 
 /* [Gabriel] timer della domanda: numero rosso negli ultimi 5 secondi.
@@ -227,7 +229,7 @@ body {
 
 /* [Manuel] contatore, domanda, risposte, classi corretta/sbagliata */
 .intestazioneQuiz {
-  overflow: hidden; /* contiene i float */
+  overflow: hidden;
   margin-bottom: 24px;
 }
 
@@ -259,7 +261,7 @@ body {
 
 .rispostaQuiz {
   display: block;
-  overflow: hidden; /* contiene il float della lettera */
+  overflow: hidden;
   width: 100%;
   margin-bottom: 12px;
   padding: 14px 16px;
@@ -286,7 +288,7 @@ body {
 
 .testoRisposta {
   display: block;
-  margin-left: 46px; /* 32px lettera + 14px spazio */
+  margin-left: 46px;
   line-height: 32px;
 }
 
@@ -321,4 +323,32 @@ body {
    sulle <section> delle schermate, altrimenti questa regola può perdere */
 .nascosto {
   display: none;
+}
+
+/*lista pagina finale di domande con soluzioni*/
+
+.risposteDate {
+  margin-top: 15px;
+}
+
+.liInterno:first-child {
+  margin-top: 15px;
+}
+
+.liInterno {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 2px solid #37038b;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px#6D2871;
+}
+
+.liInterno p {
+  display: block;
+  text-align: start;
+  margin-bottom: 5px;
+}
+
+.nascosto{
+  display: none;  
 }

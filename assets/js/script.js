@@ -24,7 +24,7 @@ const quizDomande = [
     domanda: "Quale tag HTML rappresenta il livello di intestazione più importante nel contenuto di una pagina?",
     opzioni: ["<h6>", "<header>", "<h1>", "<head>"],
     rispostaCorretta: "<h1>",
-    tempo: 15
+    tempo: 20
   },
   {
     id: 2,
@@ -32,7 +32,7 @@ const quizDomande = [
     domanda: "Quale attributo del tag <img> contiene il testo alternativo mostrato se l'immagine non si carica?",
     opzioni: ["alt", "src", "title", "href"],
     rispostaCorretta: "alt",
-    tempo: 15
+    tempo: 20
   },
   {
     id: 3,
@@ -40,7 +40,7 @@ const quizDomande = [
     domanda: "Quale tag HTML si usa per creare una lista non ordinata (con i pallini)?",
     opzioni: ["<ol>", "<li>", "<dl>", "<ul>"],
     rispostaCorretta: "<ul>",
-    tempo: 10
+    tempo: 20
   },
   {
     id: 4,
@@ -61,7 +61,7 @@ const quizDomande = [
     domanda: "Quale attributo rende obbligatorio un campo <input> prima dell'invio del form?",
     opzioni: ["mandatory", "validate", "required", "needed"],
     rispostaCorretta: "required",
-    tempo: 15
+    tempo: 20
   },
   {
     id: 6,
@@ -69,7 +69,7 @@ const quizDomande = [
     domanda: "Quale tag HTML5 è pensato per il contenuto principale e unico di una pagina?",
     opzioni: ["<main>", "<section>", "<article>", "<div>"],
     rispostaCorretta: "<main>",
-    tempo: 15
+    tempo: 20
   },
   {
     id: 7,
@@ -77,7 +77,7 @@ const quizDomande = [
     domanda: "Quale proprietà CSS controlla lo spazio tra il contenuto di un elemento e il suo bordo?",
     opzioni: ["margin", "border-spacing", "gap", "padding"],
     rispostaCorretta: "padding",
-    tempo: 15
+    tempo: 20
   },
   {
     id: 8,
@@ -85,7 +85,7 @@ const quizDomande = [
     domanda: "Quale valore di display trasforma un contenitore in un contenitore flessibile (flexbox)?",
     opzioni: ["block", "flex", "inline", "float"],
     rispostaCorretta: "flex",
-    tempo: 10
+    tempo: 20
   },
   {
     id: 9,
@@ -93,7 +93,7 @@ const quizDomande = [
     domanda: "Quale selettore CSS seleziona tutti gli elementi con class=\"bottone\"?",
     opzioni: ["#bottone", "bottone", ".bottone", "*bottone"],
     rispostaCorretta: ".bottone",
-    tempo: 10
+    tempo: 20
   },
   {
     id: 10,
@@ -101,7 +101,7 @@ const quizDomande = [
     domanda: "Quale proprietà CSS arrotonda gli angoli di un elemento?",
     opzioni: ["border-radius", "corner-style", "round-corner", "box-round"],
     rispostaCorretta: "border-radius",
-    tempo: 10
+    tempo: 20
   },
   {
     id: 11,
@@ -109,7 +109,7 @@ const quizDomande = [
     domanda: "Quale pseudo-classe CSS si applica quando il mouse passa sopra un elemento?",
     opzioni: [":active", ":focus", ":visited", ":hover"],
     rispostaCorretta: ":hover",
-    tempo: 10
+    tempo: 20
   },
   {
     id: 12,
@@ -130,15 +130,15 @@ const quizDomande = [
     domanda: "Quale metodo converte una stringa JSON in un oggetto JavaScript?",
     opzioni: ["JSON.stringify()", "JSON.object()", "JSON.parse()", "JSON.convert()"],
     rispostaCorretta: "JSON.parse()",
-    tempo: 15
+    tempo: 20
   },
   {
     id: 14,
     categoria: "JavaScript",
     domanda: "Qual è il risultato dell'espressione '5' + 3 in JavaScript?",
-    opzioni: ["53", "8", "NaN", "undefined"],
-    rispostaCorretta: "53",
-    tempo: 15
+    opzioni: ["'53'", "8", "NaN", "undefined"],
+    rispostaCorretta: "'53'",
+    tempo: 20
   },
   {
     id: 15,
@@ -146,7 +146,7 @@ const quizDomande = [
     domanda: "Quale operatore confronta valore e tipo senza fare conversioni?",
     opzioni: ["==", "=", "!=", "==="],
     rispostaCorretta: "===",
-    tempo: 10
+    tempo: 20
   },
   {
     id: 16,
@@ -154,7 +154,7 @@ const quizDomande = [
     domanda: "Quale metodo degli array crea un nuovo array applicando una funzione a ogni elemento?",
     opzioni: ["forEach()", "map()", "filter()", "pop()"],
     rispostaCorretta: "map()",
-    tempo: 15
+    tempo: 20
   },
   {
     id: 17,
@@ -162,7 +162,7 @@ const quizDomande = [
     domanda: "Quale metodo restituisce il primo elemento della pagina che corrisponde a un selettore CSS?",
     opzioni: ["getElementsByClassName()", "getElement()", "querySelector()", "selectFirst()"],
     rispostaCorretta: "querySelector()",
-    tempo: 15
+    tempo: 20
   },
   {
     id: 18,
@@ -170,7 +170,7 @@ const quizDomande = [
     domanda: "Quale metodo collega una funzione a un evento (per esempio il click) di un elemento?",
     opzioni: ["addEventListener()", "onEvent()", "listen()", "attachClick()"],
     rispostaCorretta: "addEventListener()",
-    tempo: 15
+    tempo: 20
   },
   {
     id: 19,
@@ -178,7 +178,7 @@ const quizDomande = [
     domanda: "Quale funzione ripete un'azione a intervalli regolari di tempo?",
     opzioni: ["setTimeout()", "repeat()", "delay()", "setInterval()"],
     rispostaCorretta: "setInterval()",
-    tempo: 10
+    tempo: 20
   },
   {
     id: 20,
@@ -200,6 +200,7 @@ const quizDomande = [
 const sogliaPromozione = 60;     // percentuale minima per "Promosso"
 const ritardoFeedback = 1500;   // ms di attesa dopo risposta prima di avanzare
 const sezioneDomande = document.querySelector('#domande');
+const paginaIniziale = document.querySelector("#paginaIniziale");
 
 /* Stato globale */
 let schermataAttiva = "welcome"; // "welcome" | "quiz" | "results"
@@ -240,24 +241,65 @@ function mostraSchermataGiusta(idSchermata) {  //FUNZIONE PER CAMBIARE SCHERMATA
 };
 //vediamo la pagina iniziale giusta grazie alla classe css .nascosto assegnata alle 2 che vogliamo nascondere
 
-/*
-  [ALESSANDRO]
 
-  Questo file gestisce le schermate iniziale e finale del quiz.
-
-  - mostraBenvenuto(): crea la schermata iniziale e il pulsante "Inizia Quiz"
-  - mostraRisultati(): mostra punteggio, percentuale e risultato finale
-*/
-/*
-  [ALESSANDRO]
-
-  Questo file gestisce la schermata iniziale del quiz.
-
-  - mostraBenvenuto(): crea titolo, descrizione e pulsante "Inizia Quiz"
-  - al click passa alla schermata delle domande
-*/
-
+/*[Manuel, Alessandro, Nicholas, Giuseppe e Gabriel]*/ 
+//funzione mostra pagina iniziale
 function mostraBenvenuto() {
+
+  //creazione h1 della pagina
+  const titoloInziale = document.createElement('h1');
+  titoloInziale.classList.add('titoloInziale');
+  titoloInziale.textContent = 'Benvenuto al Quiz! 🤗';
+
+  //p di presentazione
+  const introIniziale = document.createElement('p');
+  introIniziale.classList.add('introIniziale');
+  introIniziale.textContent = 'Metti alla prova le tue conoscenze di HTML, CSS e JavaScript. Per ogni domanda hai 20 secondi!';
+
+  //creazione ul per appenderci i vari li
+  const listaIstruzioni = document.createElement('ul');
+
+  //creazione dei vari li per le diverse istruzioni
+  const puntiLista = document.createElement('li');
+  puntiLista.classList.add('puntiLista');
+  puntiLista.textContent = 'Ogni domanda è a tempo e può ricevere una sola risposta.';
+
+  const punto2 = document.createElement('li');
+  punto2.classList.add('puntiLista');
+  punto2.textContent = 'Una volta cliccata una risposta non si può cambiare.';
+
+  const punto3 = document.createElement('li');
+  punto3.classList.add('puntiLista');
+  punto3.textContent = 'Il quiz dura circa 3 minuti.';
+
+  //bottone per iniziare il quiz
+  const bottoneInizia = document.createElement("button");
+  bottoneInizia.classList.add('pulsantePrimario')
+  bottoneInizia.textContent = "Inizia Quiz";
+  bottoneInizia.id = "iniziaQuiz";
+
+  //appendiamo i li a ul
+  listaIstruzioni.appendChild(puntiLista);
+  listaIstruzioni.appendChild(punto2);
+  listaIstruzioni.appendChild(punto3);
+  
+  //appendiamo tutto alla paginaIniziale
+  paginaIniziale.appendChild(titoloInziale);
+  paginaIniziale.appendChild(introIniziale);
+  paginaIniziale.appendChild(listaIstruzioni);
+  paginaIniziale.appendChild(bottoneInizia);
+
+  //listener per il click del bottone che fa iniziare le domande
+  bottoneInizia.addEventListener("click", function () {
+    schermataAttiva = "quiz";
+    mostraSchermataGiusta("domande");
+    caricaProssimaDomanda();
+  });
+}
+
+
+
+/*function mostraBenvenuto() {
   const paginaIniziale = document.querySelector("#paginaIniziale");
 
   paginaIniziale.innerHTML = `
@@ -279,7 +321,7 @@ function mostraBenvenuto() {
     mostraSchermataGiusta("domande");
     caricaProssimaDomanda();
   });
-}
+}*/
 
 mostraBenvenuto();
 
@@ -318,7 +360,9 @@ function caricaProssimaDomanda() { //NICHOLAS
     });
   } else {
     //controllo fine array
+    schermataFinale();
     mostraSchermataGiusta('paginaFinale');
+
   }
 }
 
@@ -335,13 +379,13 @@ function avviaTimer(durataInSecondi, onTempoScaduto) {  //secondo parametro = fu
     console.log(`Tempo restante: ${tempoRestante}s`);
 
     const elementoTimer = document.querySelector('.tempoRimasto');  // assegnare classe al timer o aggiornare se ggia ha una classe
-    if(elementoTimer){
+    if (elementoTimer) {
       elementoTimer.textContent = `${tempoRestante}s`
     }
-    if(tempoRestante <= 5) {
+    if (tempoRestante <= 5) {
       elementoTimer.classList.add('tempoRosso')  //cambiare con classe creata in css per il timer quasi scaduto
     }
-    
+
     if (tempoRestante <= 0) {  //
       fermaTimer();
 
@@ -378,7 +422,7 @@ function gestisciTempoScaduto() {  //NICHOLAS
   setTimeout(() => {
     indiceDomanda++;
     caricaProssimaDomanda();
-  }, 2000);
+  }, 1500);
 }
 
 
@@ -502,51 +546,3 @@ function renderQuiz() {
 //     contatore.textContent = `Domanda ${indiceDomanda + 1} di ${quizDomande.length}`;
 // }
 // sezioneDomande.appendChild(contatore);
-
-
-
-/*
-  [ALESSANDRO]
-  Schermata finale del quiz e pulsante Ricomincia.
-  */
-
-function creaPaginaFinale() {
-  const paginaFinale = document.querySelector("#paginaFinale");
-
-  paginaFinale.innerHTML = `
-    <h2 class="titoloFinale">Risultati</h2>
-    <p class="sottotitoloFinale">Hai completato il quiz.</p>
-    <p class="percentualeFinale">0%</p>
-    <p class="esitoFinale">Esito</p>
-
-    <div class="barreFinali">
-      <div class="rigaBarra">
-        <span class="etichettaBarra">Corrette</span>
-        <div class="tracciaBarra">
-          <div class="riempimentoBarra barraCorrette"></div>
-        </div>
-        <span class="conteggioBarra">0/10</span>
-      </div>
-
-      <div class="rigaBarra">
-        <span class="etichettaBarra">Sbagliate</span>
-        <div class="tracciaBarra">
-          <div class="riempimentoBarra barraSbagliate"></div>
-        </div>
-        <span class="conteggioBarra">0/10</span>
-      </div>
-    </div>
-
-    <button id="ricominciaQuiz" class="pulsantePrimario">Ricomincia</button>
-  `;
-
-  document.querySelector("#ricominciaQuiz").addEventListener("click", function () {
-    fermaTimer();
-    indiceDomanda = 0;
-    punteggio = 0;
-    schermataAttiva = "welcome";
-    mostraSchermataGiusta("paginaIniziale");
-  });
-}
-
-creaPaginaFinale();

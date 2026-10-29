@@ -40,14 +40,44 @@ body {
 }
 
 /* [Gabriel] TIMER ROTONDO: anello che si accorcia ogni secondo, rosso da 5 a 0 */
+/* Cerchio esterno: il colore (verde) si vede qui e il JS lo cancella piano piano */
 .timerRotondo {
-  position: relative; /* i secondi si posizionano sopra il cerchio */
-  display: inline;
-  float: right;
-  width: 64px; /* misura del timer: si cambia solo qui (e nel line-height sotto) */
-  height: 64px;
+  position: relative;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 24px; /* centrato */
+  border-radius: 50%; /* lo rende rotondo */
+  background: conic-gradient(#2a7d57 100%, #e2e4ec 0); /* all'inizio tutto verde */
 }
 
+/* Cerchio bianco al centro: copre il mezzo e lascia visibile solo l'anello.
+   7px = spessore dell'anello; 70 - 7 - 7 = 56 */
+.cerchioCentrale {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  text-align: center;
+  line-height: 56px; /* uguale all'altezza: centra il numero in verticale senza flexbox */
+}
+
+/* Il numero dei secondi */
+.tempoRimasto {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #0d1422;
+}
+
+.tempoRimasto.tempoGiallo {
+  color: #b38f00;
+}
+
+.tempoRimasto.tempoRosso {
+  color: #d32f2f;
+}
 /* [Gabriel] il cerchio SVG riempie il contenitore; ruotato di -90° così la barra parte dall'alto */
 .cerchiTimer {
   width: 100%;

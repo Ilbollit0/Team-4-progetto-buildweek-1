@@ -8,10 +8,13 @@
 
 /*
   Array di domande.
-  Ogni question è un object con:
-   - question: testo della domanda
-   - correct_answer: la risposta corretta (string)
-   - incorrect_answers: array di risposte sbagliate (string[])
+  Ogni domanda è un oggetto con:
+   - id: numero della domanda
+   - categoria: HTML, CSS o JavaScript
+   - domanda: testo della domanda
+   - opzioni: array delle risposte possibili (string[])
+   - rispostaCorretta: la risposta corretta (string)
+   - tempo: secondi a disposizione
 */
 
 const quizDomande = [
@@ -218,21 +221,19 @@ const quizDomande = [
 ];
 
 /* Costanti del quiz */
-const sogliaPromozione = 60; // percentuale minima per "Promosso"
 const ritardoFeedback = 1500; // ms di attesa dopo risposta prima di avanzare
 const sezioneDomande = document.querySelector("#domande");
 const paginaIniziale = document.querySelector("#paginaIniziale");
 
 /* Stato globale */
-let schermataAttiva = "welcome"; // "welcome" | "quiz" | "results"
 let indiceDomanda = 0; //usato per caricaProssimaDomanda
 let punteggio = 0;
 let timerIntervallo = null;
 let tempoRestante = 0;
 
 //NICHOLAS
-//creare section con html con id diversi tutte le section devono avere la classe (schermata) la pagina del quiz e la pagina finale devono avere la classe (nascosto)
-//creare classe nascosto in css con display: none;
+//le section in index.html hanno tutte la classe (schermata); quella del quiz e quella finale partono con la classe (nascosto)
+//la classe nascosto in css ha display: none;
 function mostraSchermataGiusta(idSchermata) {
   //FUNZIONE PER CAMBIARE SCHERMATA IN SPA PASSARE ID DELLA SCHERMATA
   const tutteLeSchermate = document.querySelectorAll(".schermata");
@@ -240,9 +241,9 @@ function mostraSchermataGiusta(idSchermata) {
     //assegniamo la classe per nascondere tutte le schermate
     schermata.classList.add("nascosto");
   });
-  const schermataDaMostrare = document.getElementById(idSchermata); //rimuoviamo la classe che la nasconde a schermo
+  const schermataDaMostrare = document.getElementById(idSchermata);
   if (schermataDaMostrare) {
-    schermataDaMostrare.classList.remove("nascosto");
+    schermataDaMostrare.classList.remove("nascosto"); //rimuoviamo la classe che la nasconde a schermo
   }
 }
 //vediamo la pagina iniziale giusta grazie alla classe css .nascosto assegnata alle 2 che vogliamo nascondere
@@ -263,6 +264,7 @@ function mostraBenvenuto() {
 
   //creazione ul per appenderci i vari li
   const listaIstruzioni = document.createElement("ul");
+  listaIstruzioni.classList.add("regoleIniziali");
 
   //creazione dei vari li per le diverse istruzioni
   const puntiLista = document.createElement("li");
@@ -297,7 +299,6 @@ function mostraBenvenuto() {
 
   //listener per il click del bottone che fa iniziare le domande
   bottoneInizia.addEventListener("click", function () {
-    schermataAttiva = "quiz";
     mostraSchermataGiusta("domande");
     caricaProssimaDomanda();
   });
@@ -308,16 +309,16 @@ mostraBenvenuto();
 //NICHOLAS
 function mescolaArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
-    // usiamo Math.floor() per arrotondare per difetto e rendere il numero un  intero
-    //math.random() lu usiamo per estrarre il numero decimale casuale e lo moltiplichiamo per i + 1 altrimenti non peschiamo l'ultimo elemento
+    // usiamo Math.floor() per arrotondare per difetto e rendere il numero un intero
+    //math.random() lo usiamo per estrarre il numero decimale casuale e lo moltiplichiamo per i + 1 altrimenti non peschiamo l'ultimo elemento
     const j = Math.floor(Math.random() * (i + 1)); //usata come indice casuale  usiamo i + 1 in modo da poter estrarre l'ultimo elemento dell'array
-    [array[i], array[j]] = [array[j], array[i]]; //prendiamo l'ultimoo elemento dell array e lo scambiamo di posto con un elemento con indice j (j-pescata casualmente)
+    [array[i], array[j]] = [array[j], array[i]]; //prendiamo l'ultimo elemento dell array e lo scambiamo di posto con un elemento con indice j (j-pescata casualmente)
   } //al secondo giro prendiamo il penultimo e cosi via
   return array;
 }
 // Creiamo una copia e la mescoliamo subito all'avvio della pagina
 let domandeMischiate = mescolaArray([...quizDomande]);
-//trasformiano l array con .map() utilizzando mescolaArray anche sulle risposte
+//trasformiamo l array con .map() utilizzando mescolaArray anche sulle risposte
 domandeMischiate = domandeMischiate.map((domanda) => ({
   ...domanda,
   opzioni: mescolaArray([...domanda.opzioni]),
@@ -336,9 +337,9 @@ function caricaProssimaDomanda() {
     renderQuiz();
     // Avvia il timer usando il tempo specifico della domandaCorrente
     avviaTimer(domandaCorrente.tempo, () => {
-      //richiama AvviaQuizTimer che a sua volta richiama caricaProssimaDomanda fino ad uscire dall if
+      //allo scadere avviaTimer chiama questa funzione, che richiama caricaProssimaDomanda fino ad uscire dall if
       console.log("Tempo scaduto per questa domanda!"); //Controllo azzeramento timer
-      gestisciTempoScaduto(); // gestisce il btn che si ullima se non dai risposta in contatore e richiama la prossima domanda
+      gestisciTempoScaduto(); // illumina la risposta giusta se non hai risposto in tempo e richiama la prossima domanda
     });
   } else {
     //controllo fine array
@@ -348,7 +349,7 @@ function caricaProssimaDomanda() {
 }
 
 //NICHOLAS
-// primo parametro = quanti secondi sono passati
+// primo parametro = durata della domanda in secondi, secondo = funzione da chiamare allo scadere
 function avviaTimer(durataInSecondi, onTempoScaduto) {
   fermaTimer();
   tempoRestante = durataInSecondi;
@@ -396,28 +397,24 @@ function avviaTimer(durataInSecondi, onTempoScaduto) {
 function fermaTimer() {
   if (timerIntervallo) {
     clearInterval(timerIntervallo); //blocca il timer
-    timerIntervallo = null; //usiamo null per svuotare la variante
+    timerIntervallo = null; //usiamo null per svuotare la variabile
   }
 }
 
 //NICHOLAS
-// illumina risposta esatta allo scadere se nessun btn e stato premuto e passa alla prossima domanda funzione da richiamare in caricaProssimaDomanda
+// illumina risposta esatta allo scadere se nessun btn e stato premuto e passa alla prossima domanda, viene richiamata in caricaProssimaDomanda
 function gestisciTempoScaduto() {
   let domanda = domandeMischiate[indiceDomanda];
-  const tuttiIBottoni = document.querySelectorAll(".rispostaQuiz"); //selezioniamo tutti i btn cambiare classe con la classe assegnata da francesco in renderQuiz()
+  const tuttiIBottoni = document.querySelectorAll(".rispostaQuiz"); //selezioniamo tutti i btn creati in renderQuiz()
 
   tuttiIBottoni.forEach((btn) => {
     btn.disabled = true; // disattiva i btn
-  });
-  //possibilita' di unire i due forEach
-  tuttiIBottoni.forEach((btn) => {
-    //assegna classe cerretto per illuminare risposta giusta allo scadere
+    //verifichiamo la risposta giusta e gli diamo la classe corretta per illuminarla allo scadere
     if (btn.dataset.testoRisposta === domanda.rispostaCorretta) {
-      //verifichiamo la risposta giusta e gli diamo la classe
-      btn.classList.add("corretta"); //cambiare col nome della classe assegnata alle risposte corrette
+      btn.classList.add("corretta");
     }
   });
-  // Aspetta 2 secondi e richiama caricaProssimaDomanda
+  // Aspetta 1,5 secondi e richiama caricaProssimaDomanda
   setTimeout(() => {
     indiceDomanda++;
     caricaProssimaDomanda();
@@ -425,8 +422,6 @@ function gestisciTempoScaduto() {
 }
 
 //FRANCESCO
-// Creo una costante per selezionare il contenitore main html
-
 function gestisciRisposta(bottone, rispostaCliccata) {
   fermaTimer();
 
@@ -456,14 +451,14 @@ function gestisciRisposta(bottone, rispostaCliccata) {
 }
 
 function renderQuiz() {
-  //costante per tenere traccia della domanda che verra visualizzata dall'array quizDomande
+  //variabile per tenere traccia della domanda che verra visualizzata dall'array domandeMischiate
   let domandaCorrente = domandeMischiate[indiceDomanda];
 
   //Creazione degli elementi html per la visualizzazione
   const contenitore = document.createElement("div"); //contenitore che contiene tutta la visualizzazione della domanda
   contenitore.classList.add("quiz");
 
-  const intestazione = document.createElement("div"); //Raggruppa contatore e timer
+  const intestazione = document.createElement("div"); //Raggruppa il contatore
   intestazione.classList.add("intestazioneQuiz");
 
   const categoria = document.createElement("p"); // serve per mostrare la categoria della domanda corrente (facoltativo)
@@ -471,7 +466,7 @@ function renderQuiz() {
   // recupero la categoria della domanda corrente e la scrivo nell'elemento categoria creato in precedenza
   categoria.textContent = domandaCorrente.categoria;
 
-  const contatore = document.createElement("p"); //mostra il numero della domanda corrente esempio 3 di 5
+  const contatore = document.createElement("p"); //mostra il numero della domanda corrente esempio 3 di 10
   contatore.classList.add("contatoreQuiz");
   //aggiorno il contatore
   contatore.textContent = `DOMANDA ${indiceDomanda + 1} DI 10`;
@@ -479,29 +474,12 @@ function renderQuiz() {
   const timer = document.createElement('p')
   timer.classList.add("tempoRimasto"); // già stilizzata da Gabriel in CSS
 
-
   const containerTimer = document.createElement("div"); // per il tempo rimanente alla risposta
   containerTimer.classList.add("timerRotondo");
-
-
-  const fettaDestra = document.createElement('div');
-  //aggiungi classi css
-
-  const latoDestro = document.createElement('div');
-  //aggiungiamo classe css
-  fettaDestra.appendChild(latoDestro);
-
-  const fettaSinistra = document.createElement('div')
-  //aggiungi classi css
-  const latoSinistro = document.createElement('div');
-  //aggiungiamo classe css
-  fettaSinistra.appendChild(latoSinistro);
 
   const cerchioCentrale = document.createElement('div');
   cerchioCentrale.classList.add("cerchioCentrale");
 
-  containerTimer.appendChild(fettaDestra);
-  containerTimer.appendChild(fettaSinistra);
   containerTimer.appendChild(cerchioCentrale)
   cerchioCentrale.appendChild(timer);
   /*[Manuel]*/
@@ -511,26 +489,14 @@ function renderQuiz() {
   const listaRisposte = document.createElement("div"); //possibili risposte
   listaRisposte.classList.add("listaRisposte");
 
-
-
-
-
-
-
-
-
-
-
-
   //visualizzazione del tempo
-  timer.textContent = `${domandaCorrente.tempo}s`;
   timer.textContent = `${tempoRestante}s`;
   //visualizzazione del testo della domanda
   domanda.textContent = domandaCorrente.domanda;
   //raggruppo gli elementi nell'intestazione <div>
   intestazione.append(contatore);
 
-  //raggruppo tutto nel contenitore principale <section>
+  //raggruppo tutto nel contenitore principale <div>
   contenitore.append(intestazione, containerTimer, categoria, domanda, listaRisposte);
 
   //utilizzo foreach per eseguire la funzione una volta per ogni elemento "opzioni" dell'array opzioni
@@ -561,8 +527,6 @@ function renderQuiz() {
     //inserisco il bottone appena creato in listaRisposte <div>
     listaRisposte.appendChild(bottone);
 
-    testoRisposta.textContent = risposta;
-
     bottone.addEventListener("click", () => {
       gestisciRisposta(bottone, risposta);
     });
@@ -591,46 +555,56 @@ function schermataFinale() {
   risultatoPercentuale.classList.add("percentualeFinale");
   risultatoPercentuale.textContent = `${percentuale}%`;
 
-  // controllo esisto quiz
+  // controllo esito quiz
   const esitoFinale = document.createElement("p");
   esitoFinale.classList.add("esitoFinale");
   if (punteggio >= 6) {
     esitoFinale.textContent = "Promosso 🥳";
     esitoFinale.classList.add("esitoPromosso");
-  }
-  if (punteggio < 6) {
+  } else {
     esitoFinale.textContent = "Bocciato 😩";
     esitoFinale.classList.add("esitoBocciato");
   }
 
-  //creazione costante per pagina finale
+  //contenitore delle due righe con le barre
+  const barreFinali = document.createElement("div");
+  barreFinali.classList.add("barreFinali");
+
+  //riga delle corrette: etichetta, barra, conteggio
   const contenitoreCorrette = document.createElement("div");
+  contenitoreCorrette.classList.add("rigaBarra");
 
   const percentualeCorrette = document.createElement("span");
+  percentualeCorrette.classList.add("etichettaBarra");
   percentualeCorrette.textContent = "Corrette";
 
   const barraCorrette = document.createElement("div");
   barraCorrette.classList.add("tracciaBarra");
 
   const barraInternaCorrette = document.createElement("div");
-  barraInternaCorrette.classList.add("barraCorrette");
+  barraInternaCorrette.classList.add("riempimentoBarra", "barraCorrette");
   barraInternaCorrette.style.width = `${percentuale}%`; //Percentuale di domande corrette
 
   const risultatoDomandeCorrette = document.createElement("span");
+  risultatoDomandeCorrette.classList.add("conteggioBarra");
   risultatoDomandeCorrette.textContent = `${risposteCorrette} / 10`; // Numero risposte corrette
 
+  //riga delle sbagliate: etichetta, barra, conteggio
   const contenitoreSbagliate = document.createElement("div");
+  contenitoreSbagliate.classList.add("rigaBarra");
 
   const percentualeSbagliate = document.createElement("span");
+  percentualeSbagliate.classList.add("etichettaBarra");
   percentualeSbagliate.textContent = "Sbagliate";
 
   const barraSbagliate = document.createElement("div");
   const barraInternaSbagliate = document.createElement("div");
   barraSbagliate.classList.add("tracciaBarra");
-  barraInternaSbagliate.classList.add("barraSbagliate");
+  barraInternaSbagliate.classList.add("riempimentoBarra", "barraSbagliate");
   barraInternaSbagliate.style.width = `${100 - percentuale}%`; // Calcola la differenza tra larghezza massima dell'elemento (100) meno la % delle risposte corrette
 
   const risultatoDomandeSbagliate = document.createElement("span");
+  risultatoDomandeSbagliate.classList.add("conteggioBarra");
   risultatoDomandeSbagliate.textContent = `${risposteSbagliate} / 10`; // Numero risposte sbagliate
   // Creazione bottone, appendChild
   const bottoneRicomincia = document.createElement("button");
@@ -647,16 +621,18 @@ function schermataFinale() {
   contenitoreSbagliate.appendChild(barraSbagliate);
   contenitoreSbagliate.appendChild(risultatoDomandeSbagliate);
 
+  barreFinali.appendChild(contenitoreCorrette);
+  barreFinali.appendChild(contenitoreSbagliate);
+
   paginaFinale.appendChild(titoloFinale);
   paginaFinale.appendChild(sottotitoloFinale);
 
   paginaFinale.appendChild(risultatoPercentuale);
   paginaFinale.appendChild(esitoFinale);
-  paginaFinale.appendChild(contenitoreCorrette);
-  paginaFinale.appendChild(contenitoreSbagliate);
+  paginaFinale.appendChild(barreFinali);
 
   paginaFinale.appendChild(bottoneRicomincia);
-  //Bottone dinamico che reinderizza a index.html
+  //Bottone dinamico che reindirizza a index.html
   bottoneRicomincia.addEventListener("click", function () {
     window.location.href = "index.html";
   });

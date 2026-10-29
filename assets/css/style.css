@@ -4,10 +4,6 @@
   padding: 0;
 }
 
-main {
-  max-width: 992px;
-}
-
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #1b1535 url("../bg.jpg") center / cover no-repeat fixed;
@@ -75,64 +71,11 @@ body {
   color: #b38f00;
 }
 
-.tempoRimasto.tempoRosso {
-  color: #d32f2f;
-}
-/* [Gabriel] il cerchio SVG riempie il contenitore; ruotato di -90° così la barra parte dall'alto */
-.cerchiTimer {
-  width: 100%;
-  height: 100%;
-  transform: rotate(-90deg);
-}
-
-/* [Gabriel] in SVG il colore della linea si chiama "stroke", lo spessore "stroke-width", stroke usato come border-radius quindi lo spessore del bordo ovvero 6px */
-.cerchioSfondo,
-.cerchioAvanzamento {
-  fill: none;
-  stroke-width: 6px;
-}
-
-/* [Gabriel] anello grigio di sfondo: resta sempre pieno */
-.cerchioSfondo {
-  border: 3px solid #2a7d57;
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-  text-align: center;
-  padding-top: 13px;
-  background-color: #fffeff;
-  color: rgb(0, 0, 0);
-}
-
-.tempoGiallo {
-  border-color: rgb(236, 193, 21);
-}
-
-/* [Gabriel] i secondi al centro del cerchio */
-.timerRotondo .tempoRimasto {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  line-height: 64px; /* uguale all'altezza del timer: centra il numero in verticale */
-  text-align: center;
-  font-size: 0.95rem;
-  font-weight: bold;
-  color: #1b2045;
-}
-
-/* [Gabriel] ultimi 5 secondi: anello e numero rossi fino allo 0 */
-.timerRotondo.ultimiSecondi .cerchioAvanzamento {
-  stroke: #d32f2f;
-}
-
 /* [Gabriel] timer della domanda: numero rosso negli ultimi 5 secondi.
    La classe "tempoRosso" la aggiunge avviaTimer() di Nicholas */
 .tempoRimasto.tempoRosso {
   color: #d32f2f;
-  border-color: red;
 }
-
 
 /* [Luca] Pulsante principale (Inizia, Ricomincia) */
 
@@ -171,16 +114,8 @@ body {
   color: #4a5568;
 }
 
-/* il reset iniziale azzera il rientro della lista: va rimesso per vedere i pallini */
 .puntiLista {
-  list-style: disc inside;
-  line-height: 1.5;
-  color: #4a5568;
   font-size: 1.3rem;
-}
-
-.puntiLista:last-child{
-  margin-bottom: 30px;
 }
 
 /*[Luca]*/
@@ -283,13 +218,7 @@ body {
   text-align: right;
 }
 
-/* [Luca] Serve a mostraSchermataGiusta(). Tenerla per ultima - non impostare "display"
-   sulle <section> delle schermate, altrimenti questa regola può perdere */
-.nascosto {
-  display: none;
-}
-
-/*[Manuel]* contatore, domanda, risposte, classi corretta/sbagliata */
+/* [Manuel] contatore, domanda, risposte, classi corretta/sbagliata */
 .intestazioneQuiz {
   overflow: hidden; /* contiene i float */
   margin-bottom: 24px;
@@ -302,10 +231,6 @@ body {
   font-weight: 700;
   letter-spacing: 1px;
   color: #6b7280;
-}
-
-.intestazioneQuiz .tempoRimasto {
-  float: right;
 }
 
 .categoriaQuiz {
@@ -383,4 +308,10 @@ body {
 
 .rispostaQuiz:disabled {
   cursor: default;
+}
+
+/* [Luca] Serve a mostraSchermataGiusta(). Tenerla per ultima - non impostare "display"
+   sulle <section> delle schermate, altrimenti questa regola può perdere */
+.nascosto {
+  display: none;
 }

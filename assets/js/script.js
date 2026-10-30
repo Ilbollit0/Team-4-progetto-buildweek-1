@@ -1,10 +1,3 @@
-/*
-  REGOLE
-  - Codice in JavaScript moderno: solo const/let, mai var.
-  - DOM: usa querySelector / querySelectorAll.
-  - Eventi: usa addEventListener (mai onclick inline nell'HTML).
-  - Pattern: stato → render → eventi.
-*/
 
 /*
   Array di domande.
@@ -14,7 +7,8 @@
    - domanda: testo della domanda
    - opzioni: array delle risposte possibili (string[])
    - rispostaCorretta: la risposta corretta (string)
-   - tempo: secondi a disposizione
+   - tempo: secondi a disposizione (Number)
+   - soluzione: soluzione della domanda(String)
 */
 
 const quizDomande = [
@@ -242,16 +236,16 @@ const quizDomande = [
 //array in cui pushare risposte cliccate
 let arrayRisposte = [];
 /* Costanti del quiz */
-const ritardoFeedback = 1500; // ms di attesa dopo risposta prima di avanzare
+/* Stato globale */
 const sezioneDomande = document.querySelector('#domande');
 const paginaIniziale = document.querySelector('#paginaIniziale');
 const paginaFinale = document.querySelector('#paginaFinale');
 
-/* Stato globale */
 let indiceDomanda = 0; //usato per caricaProssimaDomanda
 let punteggio = 0;
 let timerIntervallo = null;
 let tempoRestante = 0;
+
 
 //NICHOLAS
 //le section in index.html hanno tutte la classe (schermata); quella del quiz e quella finale partono con la classe (nascosto)
@@ -333,7 +327,7 @@ function mescolaArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     // usiamo Math.floor() per arrotondare per difetto e rendere il numero un intero
     //math.random() lo usiamo per estrarre il numero decimale casuale e lo moltiplichiamo per i + 1 altrimenti non peschiamo l'ultimo elemento
-    const j = Math.floor(Math.random() * (i + 1)); //usata come indice casuale  usiamo i + 1 in modo da poter estrarre l'ultimo elemento dell'array
+    const j = Math.floor(Math.random() * (i + 1)); 
     [array[i], array[j]] = [array[j], array[i]]; //prendiamo l'ultimo elemento dell array e lo scambiamo di posto con un elemento con indice j (j-pescata casualmente)
   } //al secondo giro prendiamo il penultimo e cosi via
   return array;
@@ -345,22 +339,18 @@ domandeMischiate = domandeMischiate.map((domanda) => ({
   ...domanda,
   opzioni: mescolaArray([...domanda.opzioni]),
 }));
-console.log(domandeMischiate);
+
 
 function caricaProssimaDomanda() {
   //NICHOLAS
   if (indiceDomanda <= 9) {
     // stampiamo solo le prime 10 domande
-    const domandaCorrente = domandeMischiate[indiceDomanda]; // Prende la domanda corrente
-    tempoRestante = domandaCorrente.tempo; //impostiamo il tempo della domanda giusta
-    console.log(
-      `Domanda: "${domandaCorrente.domanda}" | Tempo: ${tempoRestante}s`,
-    ); // console di controllo
+    let domandaAttuale = domandeMischiate[indiceDomanda]; // Prende la domanda corrente
+    tempoRestante = domandaAttuale.tempo; //impostiamo il tempo della domanda giusta
     renderQuiz();
     // Avvia il timer usando il tempo specifico della domandaCorrente
-    avviaTimer(domandaCorrente.tempo, () => {
+    avviaTimer(domandaAttuale.tempo, () => {
       //allo scadere avviaTimer chiama questa funzione, che richiama caricaProssimaDomanda fino ad uscire dall if
-      console.log('Tempo scaduto per questa domanda!'); //Controllo azzeramento timer
       gestisciTempoScaduto(); // illumina la risposta giusta se non hai risposto in tempo e richiama la prossima domanda
     });
   } else {
@@ -372,7 +362,7 @@ function caricaProssimaDomanda() {
 
 //NICHOLAS
 // primo parametro = durata della domanda in secondi, secondo = funzione da chiamare allo scadere
-function avviaTimer(durataInSecondi, onTempoScaduto) {
+function avviaTimer(durataInSecondi, tempoScaduto) {
   fermaTimer();
   tempoRestante = durataInSecondi;
 
@@ -405,10 +395,10 @@ function avviaTimer(durataInSecondi, onTempoScaduto) {
     }
 
     //controllo fine tempo
-    if (tempoRestante <= 0) {
+    if (tempoRestante <= 0) {  
       fermaTimer();
-      if (typeof onTempoScaduto === 'function') {
-        onTempoScaduto();
+      if (typeof tempoScaduto === 'function') { //richiama funzione caricaProssimaDomanda
+        tempoScaduto();
       }
     }
   }, 1000);
@@ -427,7 +417,7 @@ function fermaTimer() {
 // illumina risposta esatta allo scadere se nessun btn e stato premuto e passa alla prossima domanda, viene richiamata in caricaProssimaDomanda
 function gestisciTempoScaduto() {
   let domanda = domandeMischiate[indiceDomanda];
-  const tuttiIBottoni = document.querySelectorAll('.rispostaQuiz'); //selezioniamo tutti i btn creati in renderQuiz()
+  let tuttiIBottoni = document.querySelectorAll('.rispostaQuiz'); //selezioniamo tutti i btn creati in renderQuiz()
 
   arrayRisposte.push({
     domandaFatta: domanda.domanda,
@@ -453,7 +443,7 @@ function gestisciTempoScaduto() {
 function gestisciRisposta(bottone, rispostaCliccata) {
   fermaTimer();
 
-  const tuttiIBottoni = document.querySelectorAll('.rispostaQuiz');
+  let tuttiIBottoni = document.querySelectorAll('.rispostaQuiz');
 
   let domanda = domandeMischiate[indiceDomanda];
 
@@ -466,29 +456,26 @@ function gestisciRisposta(bottone, rispostaCliccata) {
     soluzione: domanda.soluzione
   });
 
-  console.log(arrayRisposte);
-
   tuttiIBottoni.forEach((btn) => {
     btn.disabled = true; //blocca tutti i click seguenti
+    if (btn.dataset.testoRisposta === domanda.rispostaCorretta) {
+        btn.classList.add('corretta');
+      };
   });
+
   if (rispostaCliccata === domanda.rispostaCorretta) {
     bottone.classList.add('corretta');
     punteggio++;
-  } else {
+  }  else {
     bottone.classList.add('sbagliata');
-    tuttiIBottoni.forEach((btn) => {
-      if (btn.dataset.testoRisposta === domanda.rispostaCorretta) {
-        btn.classList.add('corretta');
-      }
-    });
-  }
+  };
   setTimeout(() => {
     indiceDomanda++;
     caricaProssimaDomanda();
   }, ritardoFeedback);
 
-}
-
+};
+  
 function renderQuiz() {
   //variabile per tenere traccia della domanda che verra visualizzata dall'array domandeMischiate
   let domandaCorrente = domandeMischiate[indiceDomanda];
@@ -550,9 +537,8 @@ function renderQuiz() {
     const bottone = document.createElement('button'); // bottone
     const lettera = document.createElement('span'); // visualizzazione della lettera, esempio A risposta. B risposta. ecc.
     const testoRisposta = document.createElement('span');
-
+    
     //assgnazione classe ai bottoni
-
     bottone.classList.add('rispostaQuiz');
     lettera.classList.add('letteraRisposta');
     testoRisposta.classList.add('testoRisposta');

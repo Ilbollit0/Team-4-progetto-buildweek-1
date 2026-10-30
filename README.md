@@ -54,13 +54,13 @@ Le tre schermate del quiz, dalla pagina iniziale ai risultati con il riepilogo d
 |---|---|
 | ![Pagina iniziale con le regole e il pulsante Inizia Quiz](assets/screenshots/01-pagina-iniziale.png) | ![Domanda con timer giallo](assets/screenshots/02-timer-giallo.png) |
 
-| Timer rosso (ultimi 5 s) | Risultati |
+| Timer rosso (ultimi 5 s) | Risposta sbagliata: la giusta in verde, la scelta in rosso |
 |---|---|
-| ![Domanda con timer rosso](assets/screenshots/03-timer-rosso.png) | ![Pagina dei risultati con percentuale, esito, barre e i pulsanti Ricomincia e Riepilogo risposte](assets/screenshots/04-risultati.png) |
+| ![Domanda con timer rosso](assets/screenshots/03-timer-rosso.png) | ![Domanda con la risposta sbagliata in rosso e quella giusta in verde](assets/screenshots/06-risposta-sbagliata.png) |
 
-| Riepilogo delle risposte (con il font Creepster) |
-|---|
-| ![Elenco delle domande con la risposta data e la soluzione, verde se corretta e rosso se sbagliata](assets/screenshots/05-riepilogo-risposte.png) |
+| Risultati | Riepilogo delle risposte (con il font Creepster) |
+|---|---|
+| ![Pagina dei risultati con percentuale, esito, barre e i pulsanti Ricomincia e Riepilogo risposte](assets/screenshots/04-risultati.png) | ![Elenco delle domande con la risposta data e la soluzione, verde se corretta e rosso se sbagliata](assets/screenshots/05-riepilogo-risposte.png) |
 
 ## Tecnologie
 
@@ -516,8 +516,8 @@ Il dettaglio, con i nomi di riferimento, è in [ISTRUZIONI PROGETTO.md](ISTRUZIO
 | Alessandro | Schermate e contatore giuste/sbagliate | Prima versione della pagina iniziale; il 29/10 correzione del nome della classe del titolo, tolto il codice commentato e commenti nella schermata finale |
 | Francesco | Lista domande e risposte con verifica | `renderQuiz` e verifica della risposta (`gestisciRisposta`) |
 | Giuseppe | Contatore interno, contatore finale | Contatore delle domande, schermata finale con percentuale, esito e barre, pulsante che mostra e nasconde il riepilogo |
-| Manuel | CSS, lista domande e risposte con verifica | Struttura HTML, unione dei file in `script.js`, classi e CSS del quiz, pagina iniziale e pulsanti, messa a punto del timer, soluzioni delle 20 domande, riepilogo delle risposte, font Creepster, icona della scheda |
-| TUTTI | sessione di gruppo | Rifinitura e Pettinata di repositry e file | Pulizia commenti, errori di sintassi, funzioni obsolete o doppie, elementi inutilizzati, extra |
+| Manuel | CSS, lista domande e risposte con verifica | Struttura HTML, unione dei file in `script.js`, classi e CSS del quiz, pagina iniziale e pulsanti, messa a punto del timer, soluzioni delle 20 domande |
+| TUTTI | sessione di gruppo | Rifinitura e Pettinata di repository e file, pulizia commenti, errori di sintassi, funzioni obsolete o doppie, elementi inutilizzati, extra, riepilogo delle risposte, font Creepster, icona della scheda |
 
 ## Flusso di lavoro Git
 

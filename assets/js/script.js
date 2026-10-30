@@ -240,7 +240,7 @@ let arrayRisposte = [];
 /* Costanti del quiz */
 
 /* Stato globale */
-const ritardoFeedback = 1500 ;
+const ritardoFeedback = 1500;
 const sezioneDomande = document.querySelector('#domande');
 const paginaIniziale = document.querySelector('#paginaIniziale');
 const paginaFinale = document.querySelector('#paginaFinale');
@@ -330,7 +330,7 @@ function mescolaArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     // usiamo Math.floor() per arrotondare per difetto e rendere il numero un intero
     //math.random() lo usiamo per estrarre il numero decimale casuale e lo moltiplichiamo per i + 1 altrimenti non peschiamo l'ultimo elemento
-    const j = Math.floor(Math.random() * (i + 1)); 
+    const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]]; //prendiamo l'ultimo elemento dell array e lo scambiamo di posto con un elemento con indice j (j-pescata casualmente)
   } //al secondo giro prendiamo il penultimo e cosi via
   return array;
@@ -392,13 +392,13 @@ function avviaTimer(durataInSecondi, tempoScaduto) {
         elementoTimer.classList.add('tempoRosso');
       }
 
-      //il colore cambia in base al tempo che scorre
-      const percentualeGrigia = 100 - (tempoRestante / durataInSecondi) * 100;
-      cerchioTimer.style.background = `conic-gradient(#e2e4ec ${percentualeGrigia}%, ${colore} 0)`;
+      //[Manuel]
+      const percentualeGrigia = 100 - (tempoRestante / durataInSecondi) * 100;//l'orologio scompare in base alla percentuale ogni secondo
+      cerchioTimer.style.background = `conic-gradient(#e2e4ec ${percentualeGrigia}%, ${colore} 0)`;//il colore cambia in base al tempo che scorre
     }
 
     //controllo fine tempo
-    if (tempoRestante <= 0) {  
+    if (tempoRestante <= 0) {
       fermaTimer();
       if (typeof tempoScaduto === 'function') { //richiama funzione caricaProssimaDomanda
         tempoScaduto();
@@ -462,14 +462,14 @@ function gestisciRisposta(bottone, rispostaCliccata) {
   tuttiIBottoni.forEach((btn) => {
     btn.disabled = true; //blocca tutti i click seguenti
     if (btn.dataset.testoRisposta === domanda.rispostaCorretta) {
-        btn.classList.add('corretta');
-      };
+      btn.classList.add('corretta');
+    };
   });
 
   if (rispostaCliccata === domanda.rispostaCorretta) {
     bottone.classList.add('corretta');
     punteggio++;
-  }  else {
+  } else {
     bottone.classList.add('sbagliata');
   };
   setTimeout(() => {
@@ -478,7 +478,8 @@ function gestisciRisposta(bottone, rispostaCliccata) {
   }, ritardoFeedback);
 
 };
-  
+
+//[Francesco]  
 function renderQuiz() {
   //variabile per tenere traccia della domanda che verra visualizzata dall'array domandeMischiate
   let domandaCorrente = domandeMischiate[indiceDomanda];
@@ -526,11 +527,12 @@ function renderQuiz() {
   intestazione.appendChild(contatore);
 
   //raggruppo tutto nel contenitore principale <div>
-  contenitore.appendChild(containerTimer);
+  contenitore.append(containerTimer, intestazione, categoria, domanda, listaRisposte);//abbiamo messo tutti insieme con append invece che singolarmente con appendChild
+  /*contenitore.appendChild(containerTimer);
   contenitore.appendChild(intestazione);
   contenitore.appendChild(categoria);
   contenitore.appendChild(domanda);
-  contenitore.appendChild(listaRisposte);
+  contenitore.appendChild(listaRisposte);*/
 
   //utilizzo foreach per eseguire la funzione una volta per ogni elemento 'opzioni' dell'array opzioni
   //risposta = stringa
@@ -540,7 +542,7 @@ function renderQuiz() {
     const bottone = document.createElement('button'); // bottone
     const lettera = document.createElement('span'); // visualizzazione della lettera, esempio A risposta. B risposta. ecc.
     const testoRisposta = document.createElement('span');
-    
+
     //assgnazione classe ai bottoni
     bottone.classList.add('rispostaQuiz');
     lettera.classList.add('letteraRisposta');
@@ -664,26 +666,14 @@ function schermataFinale() {
   });
 
   barraCorrette.appendChild(barraInternaCorrette);
-  contenitoreCorrette.appendChild(percentualeCorrette);
-  contenitoreCorrette.appendChild(barraCorrette);
-  contenitoreCorrette.appendChild(risultatoDomandeCorrette);
+  contenitoreCorrette.append(percentualeCorrette, barraCorrette, risultatoDomandeCorrette);
 
   barraSbagliate.appendChild(barraInternaSbagliate);
-  contenitoreSbagliate.appendChild(percentualeSbagliate);
-  contenitoreSbagliate.appendChild(barraSbagliate);
-  contenitoreSbagliate.appendChild(risultatoDomandeSbagliate);
+  contenitoreSbagliate.append(percentualeSbagliate, barraSbagliate, risultatoDomandeSbagliate);
 
-  barreFinali.appendChild(contenitoreCorrette);
-  barreFinali.appendChild(contenitoreSbagliate);
+  barreFinali.append(contenitoreCorrette, contenitoreSbagliate);
 
-  paginaFinale.appendChild(titoloFinale);
-  paginaFinale.appendChild(sottotitoloFinale);
-  paginaFinale.appendChild(risultatoPercentuale);
-  paginaFinale.appendChild(esitoFinale);
-  paginaFinale.appendChild(barreFinali);
-
-  paginaFinale.appendChild(bottoneRicomincia);
-  paginaFinale.appendChild(bottoneRisposte);
+  paginaFinale.append(titoloFinale, sottotitoloFinale, risultatoPercentuale, esitoFinale, barreFinali, bottoneRicomincia, bottoneRisposte);
 
   //Bottone che reindirizza a index.html ricaricando la pagina da capo
   bottoneRicomincia.addEventListener('click', function () {
@@ -693,6 +683,7 @@ function schermataFinale() {
 }
 
 //funzione per vedere le domande, risposte e risposte corrette del quiz
+//[Tutti insieme in chiamata]
 function mostraRisultati() {
   const contenitoreArray = document.createElement('div');
   contenitoreArray.classList.add('contenitoreArray');
@@ -743,20 +734,15 @@ function mostraRisultati() {
     soluzioneCorretta.classList.add('soluzioneCorretta');
     soluzioneCorretta.textContent = `${unita.soluzione}`;
 
-    divPrimoSpan.appendChild(spanLi);
-    divPrimoSpan.appendChild(rispostaData);
+    divPrimoSpan.append(spanLi, rispostaData);
 
-    divSecondoSpan.appendChild(spanLi2);
-    divSecondoSpan.appendChild(soluzioneCorretta);
+    divSecondoSpan.append(spanLi2, soluzioneCorretta);
 
-    liInterno.appendChild(testoDomanda);
-    liInterno.appendChild(divPrimoSpan);
-    liInterno.appendChild(divSecondoSpan);
+    liInterno.append(testoDomanda, divPrimoSpan, divSecondoSpan);
 
     listaRiepilogativa.appendChild(liInterno);
 
-    contenitoreArray.appendChild(risposteDate);
-    contenitoreArray.appendChild(listaRiepilogativa);
+    contenitoreArray.append(risposteDate, listaRiepilogativa);
   });
 
   return contenitoreArray; //ritorna il div che richiamiamo nella funzione precedente

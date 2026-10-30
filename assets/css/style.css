@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+/*font importato per il periodo di Halloween*/
 
 * {
   box-sizing: border-box;
@@ -280,6 +281,7 @@ body {
   margin-bottom: 28px;
   font-size: 1.4rem;
   line-height: 1.4;
+  user-select: none; /*usato per fare in modo che l'utente non possa copiare la domanda per incollarla sul web e cercarla*/
 }
 
 .rispostaQuiz {

@@ -234,9 +234,13 @@ const quizDomande = [
   },
 ];
 //array in cui pushare risposte cliccate
+
 let arrayRisposte = [];
+
 /* Costanti del quiz */
+
 /* Stato globale */
+const ritardoFeedback = 1500 ;
 const sezioneDomande = document.querySelector('#domande');
 const paginaIniziale = document.querySelector('#paginaIniziale');
 const paginaFinale = document.querySelector('#paginaFinale');
@@ -245,7 +249,6 @@ let indiceDomanda = 0; //usato per caricaProssimaDomanda
 let punteggio = 0;
 let timerIntervallo = null;
 let tempoRestante = 0;
-
 
 //NICHOLAS
 //le section in index.html hanno tutte la classe (schermata); quella del quiz e quella finale partono con la classe (nascosto)
@@ -436,7 +439,7 @@ function gestisciTempoScaduto() {
   setTimeout(() => {
     indiceDomanda++;
     caricaProssimaDomanda();
-  }, 1500);
+  }, ritardoFeedback);
 }
 
 //FRANCESCO

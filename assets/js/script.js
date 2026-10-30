@@ -26,7 +26,7 @@ const quizDomande = [
     opzioni: ["<h6>", "<header>", "<h1>", "<head>"],
     rispostaCorretta: "<h1>",
     tempo: 20,
-    soluzione: 'si usa perchè è bello'
+    soluzione: "<h1> è il titolo principale della pagina: i livelli vanno da <h1> (il più importante) a <h6> (il meno importante).",
   },
   {
     id: 2,
@@ -36,8 +36,7 @@ const quizDomande = [
     opzioni: ["alt", "src", "title", "href"],
     rispostaCorretta: "alt",
     tempo: 20,
-    soluzione: 'si usa perchè è bello'
-
+    soluzione: "L'attributo alt descrive l'immagine: appare se non si carica e viene letto dagli screen reader.",
   },
   {
     id: 3,
@@ -47,8 +46,7 @@ const quizDomande = [
     opzioni: ["<ol>", "<li>", "<dl>", "<ul>"],
     rispostaCorretta: "<ul>",
     tempo: 20,
-    soluzione: 'si usa perchè è bello'
-
+    soluzione: "<ul> crea una lista non ordinata (puntata); <ol> è ordinata e <li> è solo la singola voce.",
   },
   {
     id: 4,
@@ -63,8 +61,7 @@ const quizDomande = [
     ],
     rispostaCorretta: "Che il documento è scritto in HTML5",
     tempo: 20,
-    soluzione: 'si usa perchè è bello'
-
+    soluzione: "<!DOCTYPE html> dice al browser di interpretare la pagina come HTML5, evitando la modalità di compatibilità.",
   },
   {
     id: 5,
@@ -74,8 +71,7 @@ const quizDomande = [
     opzioni: ["mandatory", "validate", "required", "needed"],
     rispostaCorretta: "required",
     tempo: 20,
-    soluzione: 'si usa perchè è bello'
-
+    soluzione: "required impedisce l'invio del form finché il campo non viene compilato.",
   },
   {
     id: 6,
@@ -85,8 +81,7 @@ const quizDomande = [
     opzioni: ["<main>", "<section>", "<article>", "<div>"],
     rispostaCorretta: "<main>",
     tempo: 20,
-    soluzione: 'si usa perchè è bello'
-
+    soluzione: "<main> racchiude il contenuto principale e unico della pagina, e ne dovrebbe esistere uno solo.",
   },
   {
     id: 7,
@@ -96,8 +91,7 @@ const quizDomande = [
     opzioni: ["margin", "border-spacing", "gap", "padding"],
     rispostaCorretta: "padding",
     tempo: 20,
-    soluzione: 'si usa perchè è bello'
-
+    soluzione: "padding è lo spazio interno, tra il contenuto e il bordo; margin è lo spazio esterno.",
   },
   {
     id: 8,
@@ -107,8 +101,7 @@ const quizDomande = [
     opzioni: ["block", "flex", "inline", "float"],
     rispostaCorretta: "flex",
     tempo: 20,
-    soluzione: 'si usa perchè è bello'
-
+    soluzione: "display: flex trasforma il contenitore in flexbox e permette di allineare e distribuire i figli facilmente.",
   },
   {
     id: 9,
@@ -118,6 +111,7 @@ const quizDomande = [
     opzioni: ["#bottone", "bottone", ".bottone", "*bottone"],
     rispostaCorretta: ".bottone",
     tempo: 20,
+    soluzione: "Il punto (.) seleziona per classe, mentre # seleziona per id.",
   },
   {
     id: 10,
@@ -126,8 +120,7 @@ const quizDomande = [
     opzioni: ["border-radius", "corner-style", "round-corner", "box-round"],
     rispostaCorretta: "border-radius",
     tempo: 20,
-    soluzione: 'si usa perchè è bello'
-
+    soluzione: "border-radius arrotonda gli angoli; con il 50% su un quadrato si ottiene un cerchio.",
   },
   {
     id: 11,
@@ -137,8 +130,7 @@ const quizDomande = [
     opzioni: [":active", ":focus", ":visited", ":hover"],
     rispostaCorretta: ":hover",
     tempo: 20,
-    soluzione: 'si usa perchè è bello'
-
+    soluzione: ":hover si attiva quando il puntatore del mouse passa sopra l'elemento.",
   },
   {
     id: 12,
@@ -153,8 +145,7 @@ const quizDomande = [
     rispostaCorretta:
       "Include padding e bordo nella larghezza e nell'altezza dichiarate",
     tempo: 20,
-    soluzione: 'si usa perchè è bello'
-
+    soluzione: "Con border-box padding e bordo sono compresi nella width/height dichiarata, quindi le dimensioni non crescono.",
   },
   {
     id: 13,
@@ -168,6 +159,7 @@ const quizDomande = [
     ],
     rispostaCorretta: "JSON.parse()",
     tempo: 20,
+    soluzione: "JSON.parse() trasforma una stringa JSON in un oggetto; JSON.stringify() fa l'operazione inversa.",
   },
   {
     id: 14,
@@ -176,6 +168,7 @@ const quizDomande = [
     opzioni: ["'53'", "8", "NaN", "undefined"],
     rispostaCorretta: "'53'",
     tempo: 20,
+    soluzione: "Se un operando di + è una stringa, JavaScript concatena invece di sommare, quindi '5' + 3 diventa '53'.",
   },
   {
     id: 15,
@@ -184,6 +177,7 @@ const quizDomande = [
     opzioni: ["==", "=", "!=", "==="],
     rispostaCorretta: "===",
     tempo: 20,
+    soluzione: "=== confronta valore e tipo senza conversioni, mentre == converte i tipi prima di confrontare.",
   },
   {
     id: 16,
@@ -193,6 +187,7 @@ const quizDomande = [
     opzioni: ["forEach()", "map()", "filter()", "pop()"],
     rispostaCorretta: "map()",
     tempo: 20,
+    soluzione: "map() restituisce un nuovo array con il risultato della funzione applicata a ogni elemento.",
   },
   {
     id: 17,
@@ -207,6 +202,7 @@ const quizDomande = [
     ],
     rispostaCorretta: "querySelector()",
     tempo: 20,
+    soluzione: "querySelector() accetta un selettore CSS e restituisce il primo elemento che corrisponde.",
   },
   {
     id: 18,
@@ -216,6 +212,7 @@ const quizDomande = [
     opzioni: ["addEventListener()", "onEvent()", "listen()", "attachClick()"],
     rispostaCorretta: "addEventListener()",
     tempo: 20,
+    soluzione: "addEventListener() collega una funzione a un evento (click, input, ecc.) di un elemento.",
   },
   {
     id: 19,
@@ -224,6 +221,7 @@ const quizDomande = [
     opzioni: ["setTimeout()", "repeat()", "delay()", "setInterval()"],
     rispostaCorretta: "setInterval()",
     tempo: 20,
+    soluzione: "setInterval() ripete la funzione a intervalli regolari; setTimeout() la esegue una sola volta.",
   },
   {
     id: 20,
@@ -238,6 +236,7 @@ const quizDomande = [
     rispostaCorretta:
       "Un numero decimale casuale tra 0 (incluso) e 1 (escluso)",
     tempo: 20,
+    soluzione: "Math.random() restituisce un decimale tra 0 (incluso) e 1 (escluso).",
   },
 ];
 //array in cui pushare risposte cliccate
@@ -658,19 +657,19 @@ function schermataFinale() {
 
   const bottoneRisposte = document.createElement('button');
   bottoneRisposte.classList.add('bottoneRisposte')
-  bottoneRisposte.textContent = `Riepilogo risposte.`
+  bottoneRisposte.textContent = `Riepilogo risposte`
 
-  let riepilogoVisibile = false; // stato
-const schermataRisultati = mostraRisultati();
-schermataRisultati.classList.add('nascosto');
+  let riepilogoVisibile = false; // stato attuale
+  const schermataRisultati = mostraRisultati(); //mostraRiultati() ritorna il div contenitoreArray in modo da assegnargli una classe
+  schermataRisultati.classList.add('nascosto');//classe di partenza per nascondere la schermata
   bottoneRisposte.addEventListener("click", () => {
-    riepilogoVisibile = !riepilogoVisibile; // il ! inverte: true diventa false e viceversa
-    
+    riepilogoVisibile = !riepilogoVisibile; // il ! si usa per invertire il valore di riepilogoVisibile
+
     if (riepilogoVisibile) {
-      schermataRisultati.classList.remove('nascosto');
+      schermataRisultati.classList.remove('nascosto'); //rimozione della classe al primo click
       bottoneRisposte.textContent = "Nascondi riepilogo";
     } else {
-      schermataRisultati.classList.add('nascosto');
+      schermataRisultati.classList.add('nascosto'); //assegnamo nuovamnete la classe al secondo click
       bottoneRisposte.textContent = "Mostra riepilogo";
     }
   });
@@ -697,14 +696,14 @@ schermataRisultati.classList.add('nascosto');
   paginaFinale.appendChild(bottoneRicomincia);
   paginaFinale.appendChild(bottoneRisposte);
 
-  //Bottone dinamico che reindirizza a index.html
+  //Bottone che reindirizza a index.html ricaricando la pagina da capo
   bottoneRicomincia.addEventListener("click", function () {
     window.location.href = "index.html";
   });
-paginaFinale.appendChild(schermataRisultati);
+  paginaFinale.appendChild(schermataRisultati);
 }
 
-
+//funzione per vedere le domande, risposte e risposte corrette del quiz
 function mostraRisultati() {
   const contenitoreArray = document.createElement('div');
   contenitoreArray.classList.add('contenitoreArray');
@@ -713,30 +712,57 @@ function mostraRisultati() {
   risposteDate.classList.add('risposteDate');
   risposteDate.textContent = 'Ecco il riepilogo delle tue domande con le relative risposte!';
 
-
+  //creazione lista ordinata
   const listaRiepilogativa = document.createElement('ol');
   listaRiepilogativa.classList.add('listaRiepilogativa');
 
-
+  //usato per dare ad ogni li il contenuto
   arrayRisposte.forEach((unita) => {
     const liInterno = document.createElement('li');
     liInterno.classList.add('liInterno');
+    if (unita.rispostaUtente === unita.rispostaCorretta) { //confronta la risposta data dall'utente con quella corretta per dare lo sfondo al li
+      liInterno.classList.add('sfondoVerde');
+    } else {
+      liInterno.classList.add('sfondoRosso');
+    }
 
     const testoDomanda = document.createElement('p');
     testoDomanda.classList.add('testoDomanda');
     testoDomanda.textContent = `${unita.domandaFatta}`;
 
-    const rispostaData = document.createElement('p');
-    rispostaData.classList.add('rispostaData');
-    rispostaData.textContent = `La tua risposta è: ${unita.rispostaUtente}`;
+    //div che contiene i primi 2 span
+    const divPrimoSpan = document.createElement('div')
+    divPrimoSpan.classList.add('divSpan')
 
-    const soluzioneCorretta = document.createElement('p');
+    const spanLi = document.createElement('span')
+    spanLi.classList.add('spanLi')
+    spanLi.textContent = 'La tua risposta è: ';
+
+    const rispostaData = document.createElement('span');
+    rispostaData.classList.add('rispostaData');
+    rispostaData.textContent = `${unita.rispostaUtente}`;
+
+    //div che contiene i secondi 2 span
+    const divSecondoSpan = document.createElement('div')
+    divSecondoSpan.classList.add('divSpan')
+
+    const spanLi2 = document.createElement('span')
+    spanLi2.classList.add('spanLi')
+    spanLi2.textContent = 'La soluzione è: ';
+
+    const soluzioneCorretta = document.createElement('span');
     soluzioneCorretta.classList.add('soluzioneCorretta');
-    soluzioneCorretta.textContent = `La soluzione è: ${unita.soluzione}`;
+    soluzioneCorretta.textContent = `${unita.soluzione}`;
+
+    divPrimoSpan.appendChild(spanLi);
+    divPrimoSpan.appendChild(rispostaData);
+
+    divSecondoSpan.appendChild(spanLi2);
+    divSecondoSpan.appendChild(soluzioneCorretta);
 
     liInterno.appendChild(testoDomanda);
-    liInterno.appendChild(rispostaData);
-    liInterno.appendChild(soluzioneCorretta);
+    liInterno.appendChild(divPrimoSpan);
+    liInterno.appendChild(divSecondoSpan);
 
     listaRiepilogativa.appendChild(liInterno);
 
@@ -744,8 +770,6 @@ function mostraRisultati() {
     contenitoreArray.appendChild(listaRiepilogativa);
   });
 
-
-  
-return contenitoreArray;
+  return contenitoreArray; //ritorna il div che richiamiamo nella funzione precedente
 }
 

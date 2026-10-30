@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Creepster&display=swap");
 /*font importato per il periodo di Halloween*/
 
 * {
@@ -358,11 +358,10 @@ body {
   font-family: "Creepster", system-ui;
   font-weight: 400;
   font-style: normal;
-
 }
 
 /*lista delle risposte date*/
-.listaRiepilogativa li::marker{
+.listaRiepilogativa li::marker {
   font-family: "Creepster", system-ui;
   font-weight: 400;
   font-style: normal;
@@ -389,11 +388,11 @@ body {
   line-height: 25px;
 }
 
-.liInterno p:first-child{
+.liInterno p:first-child {
   font-weight: 700;
 }
 
-.spanLi{
+.spanLi {
   font-weight: bold;
   line-height: 25px;
 }
@@ -403,12 +402,23 @@ body {
 .sfondoVerde {
   border-color: #2a7d57;
   background-color: #e1f3e4;
+  background-image:
+    linear-gradient(rgba(225, 243, 228, 0.85), rgba(225, 243, 228, 0.85)),
+    url(../depositphotos_512022222-stock-illustration-spider-hanging-spiderwebs-isolated-png-removebg-preview.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #1b2845;
 }
 
 .sfondoRosso {
   border-color: #c64c46;
   background-color: #fde2df;
+  background-image:
+    linear-gradient(rgba(253, 226, 223, 0.85), rgba(253, 226, 223, 0.85)),
+    url(../depositphotos_512022222-stock-illustration-spider-hanging-spiderwebs-isolated-png-removebg-preview.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #1b2845;
 }
-

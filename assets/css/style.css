@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -92,7 +94,7 @@ body {
   padding: 13px 30px;
   border: 0;
   border-radius: 10px;
-  background-color: #1b2845;
+  background-color: #161241;
   color: #ffffff;
   font-family: inherit;
   font-size: 1.5rem;
@@ -101,12 +103,31 @@ body {
 }
 
 .pulsantePrimario:hover {
-  background-color: #2b3d6b;
+  background-color: #511d67;
 }
 
 .pulsantePrimario:focus-visible {
   outline: 3px solid #7a5cff;
   outline-offset: 2px;
+}
+
+/*[Manuel] modifica al pulsante di mostraRiepilogo*/
+
+.bottoneRisposte {
+  padding: 13px 30px;
+  border: 0;
+  border-radius: 10px;
+  background-color: #161241;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-left: 20px;
+}
+
+.bottoneRisposte:hover {
+  background-color: #511d67;
 }
 
 /* [Luca e Manuel] Pagina iniziale */
@@ -123,6 +144,7 @@ body {
   color: #4a5568;
 }
 
+/*li pagina iniziale*/
 .puntiLista {
   font-size: 1.3rem;
 }
@@ -179,6 +201,7 @@ body {
   color: #c64c46;
 }
 
+/*formattazione per le barre e gli span adiacenti*/
 .barreFinali {
   display: grid;
   gap: 16px;
@@ -241,7 +264,7 @@ body {
   letter-spacing: 1px;
   color: #6b7280;
 }
-
+/*categoria dell'array iniziale*/
 .categoriaQuiz {
   display: inline-block;
   margin-bottom: 12px;
@@ -274,7 +297,7 @@ body {
   text-align: left;
   cursor: pointer;
 }
-
+/*interno alle risposte*/
 .letteraRisposta {
   float: left;
   width: 32px;
@@ -326,9 +349,22 @@ body {
 }
 
 /*lista pagina finale di domande con soluzioni*/
-
+/*[Manuel]*/
 .risposteDate {
   margin-top: 15px;
+  font-size: 1.5rem;
+  font-family: "Creepster", system-ui;
+  font-weight: 400;
+  font-style: normal;
+
+}
+
+/*lista delle risposte date*/
+.listaRiepilogativa li::marker{
+  font-family: "Creepster", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.2rem;
 }
 
 .liInterno:first-child {
@@ -338,17 +374,39 @@ body {
 .liInterno {
   margin-bottom: 15px;
   padding: 10px;
-  border: 2px solid #37038b;
+  border: 2px solid;
   border-radius: 5px;
   box-shadow: 1px 1px 5px#6D2871;
+  text-align: start;
 }
 
 .liInterno p {
   display: block;
   text-align: start;
   margin-bottom: 5px;
+  line-height: 25px;
 }
 
-.nascosto{
-  display: none;  
+.liInterno p:first-child{
+  font-weight: 700;
 }
+
+.spanLi{
+  font-weight: bold;
+  line-height: 25px;
+}
+
+/*sfondi delle risposte in base a corrette o sbagliate*/
+
+.sfondoVerde {
+  border-color: #2a7d57;
+  background-color: #e1f3e4;
+  color: #1b2845;
+}
+
+.sfondoRosso {
+  border-color: #c64c46;
+  background-color: #fde2df;
+  color: #1b2845;
+}
+
